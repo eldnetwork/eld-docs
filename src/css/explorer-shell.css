@@ -1,0 +1,249 @@
+/* Explorer shell variables and header/footer — aligned with eld-chain-explorer */
+
+.eld-docs-shell.explorer-home-shell {
+  --lh-header-bg: rgba(9, 9, 9, 0.94);
+  --lh-success: #62d58b;
+  --lh-shell-gradient:
+    radial-gradient(circle at top center, rgba(255, 122, 24, 0.08), transparent 32%),
+    linear-gradient(180deg, #0a0a0a 0%, #070707 100%);
+  --lh-button-bg: rgba(255, 255, 255, 0.02);
+  --lh-theme-btn-hover: rgba(255, 255, 255, 0.1);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--lh-shell-gradient) !important;
+  color: var(--lh-text);
+}
+
+[data-theme='light'] .eld-docs-shell.explorer-home-shell,
+.eld-docs-shell.explorer-home-shell--light {
+  --lh-header-bg: rgba(248, 250, 252, 0.94);
+  --lh-shell-gradient:
+    radial-gradient(circle at top center, rgba(255, 122, 24, 0.16), transparent 42%),
+    linear-gradient(180deg, #fafbfc 0%, #eff3f8 100%);
+  --lh-button-bg: rgba(255, 255, 255, 0.8);
+  --lh-theme-btn-hover: rgba(15, 23, 42, 0.1);
+}
+
+.eld-docs-shell,
+.eld-docs-shell * {
+  box-sizing: border-box;
+}
+
+.eld-docs-shell__main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header — .navbar class required for Docusaurus TOC / sidebar layout */
+
+.navbar.explorer-home-shell__header {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  min-height: var(--ifm-navbar-height);
+  height: var(--ifm-navbar-height);
+  padding: 0 24px;
+  background: var(--lh-header-bg);
+  border-bottom: 1px solid var(--lh-border);
+  backdrop-filter: blur(10px);
+}
+
+.explorer-home-shell__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--lh-text);
+  text-decoration: none;
+}
+
+.explorer-home-shell__brand:hover {
+  color: var(--lh-text);
+  text-decoration: none;
+}
+
+.explorer-home-shell__brand-mark {
+  width: 20px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #fff;
+  background: var(--lh-accent);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.explorer-home-shell__brand-text {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  letter-spacing: 0.22em;
+  font-size: 0.78rem;
+  text-transform: uppercase;
+}
+
+.explorer-home-shell__brand-muted {
+  color: var(--lh-muted);
+}
+
+.explorer-home-shell__meta {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-left: auto;
+}
+
+.explorer-home-shell__chain-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.explorer-home-shell__chain-label {
+  color: var(--lh-muted);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.explorer-home-shell__chain-id {
+  color: var(--lh-faint);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.explorer-home-shell__theme-toggle {
+  margin-left: 2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 34px;
+  padding: 0;
+  color: var(--lh-faint);
+  border: 1px solid var(--lh-border);
+  background: var(--lh-button-bg);
+  cursor: pointer;
+}
+
+.explorer-home-shell__theme-toggle:hover {
+  color: var(--lh-text);
+  background: var(--lh-theme-btn-hover);
+}
+
+.explorer-home-shell__intro-link {
+  color: var(--lh-accent);
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.68rem;
+}
+
+.explorer-home-shell__intro-link:hover {
+  color: var(--lh-text);
+  text-decoration: none;
+}
+
+/* Footer */
+
+.explorer-footer {
+  width: min(1440px, 100%);
+  margin: 0 auto;
+  padding: 14px 24px 24px;
+}
+
+.explorer-footer__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr 1fr;
+  border-top: 1px solid var(--lh-border);
+  border-left: 1px solid var(--lh-border);
+}
+
+.explorer-footer__column {
+  padding: 26px 22px 32px;
+  border-right: 1px solid var(--lh-border);
+  border-bottom: 1px solid var(--lh-border);
+  background: rgba(255, 255, 255, 0.01);
+}
+
+.explorer-footer__column h3 {
+  margin: 0 0 30px;
+  font-size: 0.66rem;
+  color: var(--lh-faint);
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.explorer-footer__item {
+  display: block;
+  margin: 0;
+  color: var(--lh-muted) !important;
+  font-size: 0.8rem;
+  line-height: 1.75;
+  text-decoration: none !important;
+}
+
+.explorer-footer__item + .explorer-footer__item {
+  margin-top: 14px;
+}
+
+.explorer-footer__item:hover {
+  color: var(--lh-text) !important;
+}
+
+.explorer-footer__bottom {
+  padding: 18px 4px 0;
+  color: var(--lh-faint);
+  font-size: 0.64rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  /* Stacked header is taller than 64px — Docusaurus sidebar/TOC use this offset */
+  :root {
+    --ifm-navbar-height: 6.5rem;
+  }
+
+  .explorer-footer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .explorer-footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .navbar.explorer-home-shell__header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    height: auto;
+    min-height: 0;
+    padding: 14px 16px;
+  }
+
+  .explorer-home-shell__meta {
+    margin-left: 0;
+    width: 100%;
+    justify-content: space-between;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .explorer-footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .explorer-footer__bottom {
+    flex-direction: column;
+  }
+}

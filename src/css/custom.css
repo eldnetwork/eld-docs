@@ -1,0 +1,329 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+@import './explorer-shell.css';
+
+/* IoskeleyMono Font Family */
+@font-face {
+  font-family: 'IoskeleyMono';
+  src: url('/fonts/IoskeleyMono-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono';
+  src: url('/fonts/IoskeleyMono-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono';
+  src: url('/fonts/IoskeleyMono-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono';
+  src: url('/fonts/IoskeleyMono-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono';
+  src: url('/fonts/IoskeleyMono-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono';
+  src: url('/fonts/IoskeleyMono-MediumItalic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono';
+  src: url('/fonts/IoskeleyMono-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono';
+  src: url('/fonts/IoskeleyMono-SemiBoldItalic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono';
+  src: url('/fonts/IoskeleyMono-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono';
+  src: url('/fonts/IoskeleyMono-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono';
+  src: url('/fonts/IoskeleyMono-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IoskeleyMono';
+  src: url('/fonts/IoskeleyMono-ExtraBoldItalic.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Infima variables — aligned with eld-chain-explorer / eld-website */
+:root {
+  --ifm-font-family-base: 'IoskeleyMono', monospace;
+  --ifm-font-family-monospace: 'IoskeleyMono', monospace;
+  --ifm-color-primary: #ff7a18;
+  --ifm-color-primary-dark: #e66e14;
+  --ifm-color-primary-darker: #d96612;
+  --ifm-color-primary-darkest: #b3540f;
+  --ifm-color-primary-light: #ff8a33;
+  --ifm-color-primary-lighter: #ff9442;
+  --ifm-color-primary-lightest: #ffa866;
+  --ifm-code-font-size: 90%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  /* Must match .explorer-home-shell__header min-height — Docusaurus sidebar/TOC depend on this */
+  --ifm-navbar-height: 64px;
+  /* Compact type scale (explorer docs ~0.78–0.98rem body, sidebar ~0.66–0.78rem) */
+  --ifm-font-size-base: 14px;
+  --ifm-line-height-base: 1.75;
+  --ifm-h1-font-size: 1.75rem;
+  --ifm-h2-font-size: 1.25rem;
+  --ifm-h3-font-size: 1.05rem;
+  --ifm-h4-font-size: 0.95rem;
+  --ifm-h5-font-size: 0.875rem;
+  --ifm-h6-font-size: 0.82rem;
+  --ifm-heading-line-height: 1.2;
+  --ifm-leading: 1.45rem;
+  --ifm-menu-link-padding-vertical: 0.3rem;
+  --ifm-menu-link-padding-horizontal: 0.65rem;
+  --ifm-breadcrumb-size-multiplier: 0.85;
+  --ifm-toc-padding-vertical: 0.35rem;
+  --ifm-toc-padding-horizontal: 0.5rem;
+  --doc-sidebar-width: 260px;
+}
+
+/* Apply IoskeleyMono as default font to entire site */
+body,
+html {
+  font-family: 'IoskeleyMono', monospace !important;
+}
+
+[data-theme='dark'] {
+  --ifm-menu-link-sublist-icon-filter: invert(100%) sepia(94%) saturate(17%)
+    hue-rotate(223deg) brightness(104%) contrast(98%);
+  --lh-bg: #080808;
+  --lh-panel: rgba(12, 12, 12, 0.94);
+  --lh-border: rgba(255, 255, 255, 0.08);
+  --lh-text: #f3f3f0;
+  --lh-muted: rgba(243, 243, 240, 0.68);
+  --lh-faint: rgba(243, 243, 240, 0.4);
+  --lh-accent: #ff7a18;
+  --ifm-background-color: #080808;
+  --ifm-font-color-base: #f3f3f0;
+  --ifm-font-color-secondary: rgba(243, 243, 240, 0.68);
+  --ifm-toc-border-color: rgba(255, 255, 255, 0.08);
+  --ifm-menu-color: rgba(243, 243, 240, 0.68);
+  --ifm-menu-color-active: #ff7a18;
+  --ifm-menu-color-background-active: transparent;
+  --ifm-menu-color-background-hover: rgba(255, 255, 255, 0.04);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+[data-theme='light'] {
+  --ifm-menu-link-sublist-icon-filter: none;
+  --lh-bg: #f4f6fa;
+  --lh-panel: rgba(255, 255, 255, 0.96);
+  --lh-border: rgba(18, 31, 53, 0.16);
+  --lh-text: #0f172a;
+  --lh-muted: rgba(15, 23, 42, 0.72);
+  --lh-faint: rgba(15, 23, 42, 0.48);
+  --lh-accent: #ff7a18;
+  --ifm-background-color: #f4f6fa;
+  --ifm-font-color-base: #0f172a;
+  --ifm-font-color-secondary: rgba(15, 23, 42, 0.72);
+  --ifm-toc-border-color: rgba(18, 31, 53, 0.16);
+  --ifm-menu-color: rgba(15, 23, 42, 0.72);
+  --ifm-menu-color-active: #ff7a18;
+  --ifm-menu-color-background-active: transparent;
+  --ifm-menu-color-background-hover: rgba(15, 23, 42, 0.04);
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.06);
+}
+
+.hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+/* Reset Infima navbar defaults — we style via .explorer-home-shell__header */
+.navbar {
+  padding: 0;
+  box-shadow: none;
+}
+
+/* Docs layout — explorer shell colors */
+.main-wrapper,
+.theme-doc-wrapper,
+.docMainContainer {
+  background: transparent !important;
+}
+
+.theme-doc-markdown,
+[class*='docPage'] {
+  color: var(--lh-text);
+}
+
+.theme-doc-sidebar-container {
+  border-right: 1px solid var(--lh-border) !important;
+  background: var(--lh-panel) !important;
+}
+
+.menu,
+.menu__list {
+  background: transparent;
+}
+
+.menu {
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.menu__link {
+  color: var(--lh-muted) !important;
+  font-size: 0.78rem;
+  line-height: 1.35;
+}
+
+.menu__link:hover {
+  color: var(--lh-text) !important;
+  background: var(--ifm-menu-color-background-hover) !important;
+}
+
+.menu__link--active,
+.menu__link--active:hover {
+  color: var(--lh-accent) !important;
+  background: transparent !important;
+}
+
+.menu__list-item-collapsible .menu__link {
+  color: var(--lh-faint) !important;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Main doc content — compact body type */
+.theme-doc-markdown,
+.markdown {
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+.markdown > h1:first-child {
+  --ifm-h1-font-size: 1.85rem;
+  margin-bottom: 1rem;
+}
+
+.markdown > h2 {
+  margin-top: 1.75rem;
+}
+
+.theme-doc-markdown h1,
+.theme-doc-markdown h2,
+.theme-doc-markdown h3,
+.theme-doc-markdown h4 {
+  color: var(--lh-text, var(--ifm-font-color-base));
+  letter-spacing: -0.02em;
+}
+
+.theme-doc-markdown p,
+.theme-doc-markdown li {
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+.breadcrumbs {
+  font-size: 0.72rem;
+}
+
+.breadcrumbs__link {
+  color: var(--lh-muted, var(--ifm-font-color-secondary)) !important;
+}
+
+.breadcrumbs__item--active .breadcrumbs__link {
+  color: var(--lh-accent) !important;
+}
+
+.theme-doc-markdown a,
+article a {
+  color: var(--lh-accent, var(--ifm-color-primary)) !important;
+}
+
+.theme-doc-markdown a:hover,
+article a:hover {
+  color: var(--lh-text, var(--ifm-font-color-base)) !important;
+}
+
+.table-of-contents {
+  font-size: 0.72rem;
+}
+
+.table-of-contents__link {
+  color: var(--lh-muted, var(--ifm-font-color-secondary)) !important;
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.table-of-contents__link:hover {
+  color: var(--lh-text) !important;
+}
+
+.table-of-contents__link--active,
+.table-of-contents__link--active:hover {
+  color: var(--lh-accent) !important;
+  font-weight: inherit;
+}
+
+.hero--primary {
+  background: transparent !important;
+}
+
+.hero__title,
+.hero__subtitle {
+  color: var(--lh-text, var(--ifm-font-color-base)) !important;
+}

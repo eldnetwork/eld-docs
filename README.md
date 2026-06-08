@@ -1,0 +1,44 @@
+# Eld Docs
+
+Documentation site for the [Eld](https://eld.network) blockchain, built with [Docusaurus](https://docusaurus.io/).
+
+**Live site:** [https://docs.eld.network](https://docs.eld.network)
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) >= 20
+
+## Local development
+
+```bash
+npm install
+npm start
+```
+
+This starts a local dev server at [http://localhost:3000](http://localhost:3000). Most changes reload automatically.
+
+## Build
+
+```bash
+npm run build
+```
+
+Static output is written to the `build/` directory.
+
+To preview the production build locally:
+
+```bash
+npm run serve
+```
+
+## Links
+
+- [Eld website](https://eld.network)
+- [Block explorer](https://explorer.eld.network)
+- [X / Twitter](https://x.com/eld_network)
+
+## License
+
+MIT — see [LICENSE](LICENSE).
+
+Font files in `static/fonts/` are [Ioskeley Mono](https://github.com/ahatem/IoskeleyMono), licensed under the SIL Open Font License 1.1 — see [static/fonts/LICENSE](static/fonts/LICENSE).
