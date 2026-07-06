@@ -11,7 +11,10 @@ const footerColumns = [
   },
   {
     heading: 'Protocol',
-    items: [{label: 'Intro', href: 'https://eld.network'}],
+    items: [
+      {label: 'Intro', href: 'https://eld.network'},
+      {label: 'Litepaper', to: '/litepaper'},
+    ],
   },
   {
     heading: 'Resources',

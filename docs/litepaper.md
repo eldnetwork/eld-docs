@@ -1,9 +1,9 @@
 ---
-title: Lite Paper
+title: 'Eld Litepaper: The Eld Ephemeral Data Storage Protocol'
 description: Eld litepaper — ephemeral information storage for developers, operators, and technical readers.
 ---
 
-# Eld — Ephemeral Information Storage
+# Eld Litepaper: The Eld Ephemeral Data Storage Protocol
 
 **Eld Network · July 2026**
 
