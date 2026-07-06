@@ -15,7 +15,10 @@ const footerColumns = [
   },
   {
     heading: 'Resources',
-    items: [{label: 'Explorer', href: 'https://explorer.eld.network'}],
+    items: [
+      {label: 'Eld Blockchain Explorer', href: 'https://explorer.eld.network'},
+      {label: 'GitHub', href: 'https://github.com/eldnetwork'},
+    ],
   },
   {
     heading: 'Community',
