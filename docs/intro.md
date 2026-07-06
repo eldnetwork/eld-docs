@@ -40,8 +40,6 @@ The network targets roughly **one round of updates (a block) per second** — fa
 | **Cost model** | Grows with history | Subscription / storage fees | **Pay for the time you need** |
 | **Who can run it** | Often data centers | Provider only | **Laptops, phones, home NAS** |
 
-Eld is **trustworthy while live, intentionally forgetful afterward** — like a whiteboard that erases itself, with a receipt that proves what was written.
-
 ## Key use cases
 
 - **Temporary caching & sharing** — live events, real-time collaboration, flash sales; data expires after hours or days.
