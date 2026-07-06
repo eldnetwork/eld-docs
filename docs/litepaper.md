@@ -189,13 +189,13 @@ Stake ELD, run `eld_node_app` + Tendermint, process transactions, participate in
 
 ### Organizations and teams
 
-Deploy namespaces for branded scopes, run private coordination channels with built-in expiry, or integrate Eld as a verifiable ephemeral layer alongside existing systems — incident channels, draft collaboration, customer data with protocol-enforced sunset.
+Deploy namespaces for branded scopes, run private coordination channels with built-in expiry, or integrate Eld as a verifiable ephemeral layer alongside existing systems, such as incident channels, draft collaboration, customer data with protocol-enforced sunset.
 
 ---
 
 ## The ELD token
 
-**ELD** (`ueld` micro-units) coordinates fees, staking, and capacity rewards.
+**ELD** coordinates fees, staking, and capacity rewards. One ELD is 1 million **MICRO** (short for MICROELD).
 
 | Parameter | Testnet default (indicative) |
 |-----------|------------------------------|
@@ -206,7 +206,7 @@ Deploy namespaces for branded scopes, run private coordination channels with bui
 
 **Value flows:**
 
-- **Users** pay fees to post, transfer, register namespaces, and call contracts.
+- **Users** pay fees to post data with TTL, transfer, register namespaces, and call contracts.
 - **Validators** earn block rewards and fee shares proportional to stake.
 - **Capacity providers** earn proof-verification rewards; storage deal payments are planned.
 
