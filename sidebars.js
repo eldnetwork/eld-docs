@@ -18,6 +18,7 @@ const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder
   docs: [
     'intro',  // This makes the intro page appear first (shorthand for {type: 'doc', id: 'intro'})
+    'litepaper',
     'roadmap',
 
     {
