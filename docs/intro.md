@@ -19,7 +19,7 @@ Most online systems assume **keep everything forever**. Cloud storage bills grow
 
 Eld flips the default: **you decide how long your data stays available**, and the network enforces that expiry for everyone equally.
 
-## How it works (in plain terms)
+## How it works
 
 1. **Publish** — You post a message or file. The network records *what* you shared (a secure fingerprint of the content) and *when it expires*. The actual bytes live with storage contributors, not bloating the core ledger.
 
@@ -27,7 +27,7 @@ Eld flips the default: **you decide how long your data stays available**, and th
 
 3. **Expire automatically** — When time is up, the content stops being served and storage is reclaimed. You paid for the lifetime you needed, not centuries of hosting.
 
-4. **Stay verifiable** — Independent operators run the network. They agree on ordering and rules; they cannot silently rewrite what was published. Storage contributors prove they are holding data when challenged and earn rewards for reliable service.
+4. **Continuous verification of live content** — Independent operators run the network. They agree on ordering and rules; they cannot silently rewrite what was published. Storage contributors prove they are holding data when challenged and earn rewards for reliable service.
 
 The network targets roughly **one round of updates (a block) per second** — fast enough for real-time apps, games, and live coordination.
 
