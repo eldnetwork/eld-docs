@@ -129,14 +129,16 @@
   height: 34px;
   padding: 0;
   color: var(--lh-faint);
-  border: 1px solid var(--lh-border);
-  background: var(--lh-button-bg);
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  appearance: none;
   cursor: pointer;
 }
 
 .explorer-home-shell__theme-toggle:hover {
   color: var(--lh-text);
-  background: var(--lh-theme-btn-hover);
+  background: transparent;
 }
 
 .explorer-home-shell__intro-link {
