@@ -6,68 +6,12 @@
 
 @import './docs-shell.css';
 
-/* IoskeleyMono Font Family */
+/* IoskeleyMono — Regular, Bold, ExtraBold only (weights used by Infima + shell) */
 @font-face {
   font-family: 'IoskeleyMono';
   src: url('/fonts/IoskeleyMono-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'IoskeleyMono';
-  src: url('/fonts/IoskeleyMono-Italic.woff2') format('woff2');
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'IoskeleyMono';
-  src: url('/fonts/IoskeleyMono-Light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'IoskeleyMono';
-  src: url('/fonts/IoskeleyMono-LightItalic.woff2') format('woff2');
-  font-weight: 300;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'IoskeleyMono';
-  src: url('/fonts/IoskeleyMono-Medium.woff2') format('woff2');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'IoskeleyMono';
-  src: url('/fonts/IoskeleyMono-MediumItalic.woff2') format('woff2');
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'IoskeleyMono';
-  src: url('/fonts/IoskeleyMono-SemiBold.woff2') format('woff2');
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'IoskeleyMono';
-  src: url('/fonts/IoskeleyMono-SemiBoldItalic.woff2') format('woff2');
-  font-weight: 600;
-  font-style: italic;
   font-display: swap;
 }
 
@@ -81,25 +25,9 @@
 
 @font-face {
   font-family: 'IoskeleyMono';
-  src: url('/fonts/IoskeleyMono-BoldItalic.woff2') format('woff2');
-  font-weight: 700;
-  font-style: italic;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'IoskeleyMono';
   src: url('/fonts/IoskeleyMono-ExtraBold.woff2') format('woff2');
   font-weight: 800;
   font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'IoskeleyMono';
-  src: url('/fonts/IoskeleyMono-ExtraBoldItalic.woff2') format('woff2');
-  font-weight: 800;
-  font-style: italic;
   font-display: swap;
 }
 
@@ -220,7 +148,7 @@ html {
 
 .menu {
   font-size: 0.78rem;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 .menu__link {

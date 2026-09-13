@@ -229,11 +229,15 @@ Ongoing storage cost stays aligned with TTL — publishers pay for the lifetime 
 
 ## Where Eld is today
 
+:::info Testnet
+The **2026 testnet** is for development and integration. APIs, economics, and network membership can change; do not treat testnet balances or state as permanent.
+:::
+
 The **2026 testnet** validates **Stage 1**: pinboard, namespaces, staking, capacity-provider flows, TTL-gated payloads, and blob GC. Stage 2 consolidation, enhanced ZK capacity proofs, and production economics hardening are on the roadmap.
 
 Open for audit and integration: `eld_common`, `eld_node_app`, SDK, Chrome wallet, faucet, block explorer.
 
-**Learn more:** [eld.network](https://www.eld.network) · [docs.eld.network](https://docs.eld.network) · Full protocol draft: `white-paper-draft.md`
+**Learn more:** [eld.network](https://www.eld.network) · [docs.eld.network](https://docs.eld.network)
 
 ---
 

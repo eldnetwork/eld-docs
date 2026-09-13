@@ -11,20 +11,21 @@ const footerColumns = [
   {
     heading: 'Protocol',
     items: [
-      { label: 'Intro', href: 'https://www.eld.network' },
       { label: 'Litepaper', to: '/litepaper' },
+      { label: 'Roadmap', to: '/roadmap' },
+      { label: 'Docs', to: '/' },
     ],
   },
   {
     heading: 'Resources',
     items: [
-      { label: 'Eld Blockchain Explorer', href: 'https://explorer.eld.network' },
+      { label: 'Explorer', href: 'https://explorer.eld.network' },
       { label: 'GitHub', href: 'https://github.com/eldnetwork' },
     ],
   },
   {
     heading: 'Community',
-    items: [{ label: 'X / Twitter', href: 'https://x.com/eld_network' }],
+    items: [{ label: 'X', href: 'https://x.com/eld_network' }],
   },
 ]
 

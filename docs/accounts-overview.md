@@ -135,13 +135,20 @@ The nonce is a counter that tracks the number of transactions sent from this acc
 
 ## Security Considerations
 
-1. **Private Key Security**: Your private key is stored in `wallets.json`. Keep this file secure and never share it.
-2. **Address Reuse**: The same address can be used for multiple transactions. Addresses are public and can be shared.
-3. **Nonce Management**: The CLI automatically manages nonces by querying the current account nonce before creating transactions.
+:::warning Private keys
+Your private key is stored in `wallets.json`. Keep this file secure and never share it. Anyone with the file can spend your funds.
+:::
+
+1. **Address Reuse**: The same address can be used for multiple transactions. Addresses are public and can be shared.
+2. **Nonce Management**: The CLI automatically manages nonces by querying the current account nonce before creating transactions.
 
 ## Examples
 
 ### Complete Workflow: Create Wallet and Get Tokens
+
+:::caution Testnet faucet
+`request-faucet` is for testnet tokens only. Availability and limits depend on the faucet operator; do not rely on it for mainnet or production balances.
+:::
 
 ```bash
 # 1. Create a new wallet

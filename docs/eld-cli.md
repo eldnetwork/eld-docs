@@ -20,12 +20,20 @@ Configure the node and endpoints with `--cli-config` (default: `config/config.js
 | `get-wallet <name>`    | Display a wallet by name.                      |
 | `remove-wallet <name>` | Remove a wallet (**deletes the private key**). |
 
+:::warning Private keys
+Wallets are stored locally (including private keys). Treat `wallets.json` like a secret. `remove-wallet` permanently deletes key material for that name.
+:::
+
 ### Transfers and faucet
 
 | Command                                       | Description                                         |
 | --------------------------------------------- | --------------------------------------------------- |
 | `transfer <wallet_name> <recipient> <amount>` | Transfer native tokens.                             |
 | `request-faucet <address>`                    | Request test tokens from the faucet for an address. |
+
+:::caution Testnet faucet
+Faucet tokens are for testing only and may be rate-limited or unavailable. They have no mainnet value.
+:::
 
 ### Account and chain info
 
