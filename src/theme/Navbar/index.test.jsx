@@ -1,7 +1,7 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { describe, expect, it } from 'vitest'
-import Navbar, { THEME_STORAGE_KEY } from './index'
+import Navbar, { DOC_NAV, THEME_STORAGE_KEY } from './index'
 
 describe('Navbar', () => {
   it('persists theme choice to localStorage and toggles color mode', async () => {
@@ -18,45 +18,52 @@ describe('Navbar', () => {
     expect(window.localStorage.getItem(THEME_STORAGE_KEY)).toBe('dark')
   })
 
-  it('exposes docs, GitHub, website, and explorer links', () => {
+  it('exposes chrome links on desktop', () => {
     render(<Navbar />)
 
-    const nav = screen.getByRole('navigation', { name: 'Site' })
-    expect(within(nav).getByRole('link', { name: 'Docs' })).toHaveAttribute('href', '/')
-    expect(within(nav).getByRole('link', { name: 'GitHub' })).toHaveAttribute(
+    const chrome = screen.getByRole('navigation', { name: 'Site' })
+    expect(within(chrome).getByRole('link', { name: 'GitHub' })).toHaveAttribute(
       'href',
       'https://github.com/eldnetwork',
     )
-    expect(within(nav).getByRole('link', { name: 'Website' })).toHaveAttribute(
+    expect(within(chrome).getByRole('link', { name: 'Website' })).toHaveAttribute(
       'href',
       'https://www.eld.network',
     )
-    expect(within(nav).getByRole('link', { name: 'Explorer' })).toHaveAttribute(
+    expect(within(chrome).getByRole('link', { name: 'Explorer' })).toHaveAttribute(
       'href',
       'https://explorer.eld.network',
     )
   })
 
-  it('toggles a compact mobile menu', async () => {
+  it('opens docs content in the burger menu, not external sites', async () => {
     const user = userEvent.setup()
     render(<Navbar />)
 
     const menuButton = screen.getByRole('button', { name: /open menu/i })
-    expect(menuButton).toHaveAttribute('aria-expanded', 'false')
-    expect(document.querySelector('.eld-docs-shell__header')).not.toHaveClass(
-      'eld-docs-shell__header--menu-open',
-    )
-
     await user.click(menuButton)
-    expect(screen.getByRole('button', { name: /close menu/i })).toHaveAttribute(
-      'aria-expanded',
-      'true',
+
+    const docs = screen.getByRole('navigation', { name: 'Documentation' })
+    expect(within(docs).getByRole('link', { name: 'Welcome to Eld Docs' })).toHaveAttribute(
+      'href',
+      '/',
     )
-    expect(document.querySelector('.eld-docs-shell__header')).toHaveClass(
-      'eld-docs-shell__header--menu-open',
+    expect(within(docs).getByRole('link', { name: 'Consensus' })).toHaveAttribute(
+      'href',
+      '/consensus',
+    )
+    expect(within(docs).getByRole('link', { name: 'CLI' })).toHaveAttribute('href', '/eld-cli')
+    expect(within(docs).queryByRole('link', { name: 'GitHub' })).toBeNull()
+    expect(within(docs).queryByRole('link', { name: 'Explorer' })).toBeNull()
+
+    // Capacity Providers children are present
+    expect(DOC_NAV.some((item) => item.label === 'Capacity Providers')).toBe(true)
+    expect(within(docs).getByRole('link', { name: 'Overview' })).toHaveAttribute(
+      'href',
+      '/capacity-provider',
     )
 
-    await user.click(screen.getByRole('link', { name: 'Docs' }))
+    await user.click(within(docs).getByRole('link', { name: 'Welcome to Eld Docs' }))
     expect(screen.getByRole('button', { name: /open menu/i })).toHaveAttribute(
       'aria-expanded',
       'false',

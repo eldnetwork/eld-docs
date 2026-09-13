@@ -181,6 +181,52 @@
   color: var(--lh-text);
 }
 
+.eld-docs-shell__docs-panel {
+  display: none;
+}
+
+.eld-docs-shell__docs-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.eld-docs-shell__docs-menu-link {
+  display: block;
+  padding: 10px 4px;
+  color: var(--lh-muted);
+  text-decoration: none;
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.eld-docs-shell__docs-menu-link:hover {
+  color: var(--lh-text);
+  text-decoration: none;
+}
+
+.eld-docs-shell__docs-menu-link--active {
+  color: var(--lh-accent);
+}
+
+.eld-docs-shell__docs-menu-category {
+  margin-top: 6px;
+}
+
+.eld-docs-shell__docs-menu-category-label {
+  margin: 8px 0 4px;
+  padding: 8px 10px;
+  color: var(--lh-faint);
+  background: rgba(255, 255, 255, 0.04);
+  font-size: 0.66rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.eld-docs-shell__docs-menu-category .eld-docs-shell__docs-menu {
+  padding-left: 12px;
+}
+
 .eld-docs-shell__meta {
   display: flex;
   align-items: center;
@@ -297,32 +343,35 @@
     display: inline-flex;
   }
 
-  .eld-docs-shell__nav {
+  .eld-docs-shell__nav--chrome {
+    display: none;
+  }
+
+  .eld-docs-shell__docs-panel {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     right: 0;
     z-index: 210;
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0;
-    margin: 0;
+    max-height: min(70vh, 32rem);
+    overflow: auto;
     padding: 8px 16px 16px;
     background: var(--eld-header-bg);
     border-bottom: 1px solid var(--lh-border);
     box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
   }
 
-  .eld-docs-shell__header--menu-open .eld-docs-shell__nav {
-    display: flex;
+  .eld-docs-shell__header--menu-open .eld-docs-shell__docs-panel {
+    display: block;
   }
 
-  .eld-docs-shell__nav .eld-docs-shell__nav-link {
-    display: block;
-    padding: 12px 4px;
-    font-size: 0.78rem;
-    letter-spacing: 0.14em;
+  .eld-docs-shell__header {
+    position: sticky;
+  }
+
+  .navbar.eld-docs-shell__header {
+    position: sticky;
   }
 
   .eld-docs-shell__meta {

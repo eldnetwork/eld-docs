@@ -6,11 +6,40 @@ import { MoonIcon, SunIcon } from '@site/src/components/ThemeIcons'
 
 export const THEME_STORAGE_KEY = 'eld-docs-theme'
 
-const NAV_LINKS = [
-  { label: 'Docs', to: '/' },
+/** External chrome — desktop header only */
+const CHROME_LINKS = [
   { label: 'GitHub', href: 'https://github.com/eldnetwork' },
   { label: 'Website', href: 'https://www.eld.network' },
   { label: 'Explorer', href: 'https://explorer.eld.network', accent: true },
+]
+
+/**
+ * Docs content — mirrors sidebars.js labels (what the burger opens on mobile).
+ * Keep in sync with `sidebars.js`.
+ */
+export const DOC_NAV = [
+  { label: 'Welcome to Eld Docs', to: '/' },
+  {
+    label: 'Eld Litepaper: The Eld Ephemeral Data Storage Protocol',
+    to: '/litepaper',
+  },
+  { label: 'Roadmap', to: '/roadmap' },
+  { label: 'Consensus', to: '/consensus' },
+  { label: 'Accounts', to: '/accounts-overview' },
+  { label: 'Transactions', to: '/transactions-overview' },
+  {
+    label: 'Capacity Providers',
+    items: [
+      { label: 'Overview', to: '/capacity-provider' },
+      {
+        label: 'P2P protocol for capacity providers',
+        to: '/capacity-provider-p2p-protocol',
+      },
+    ],
+  },
+  { label: 'Custom namespaces', to: '/namespaces' },
+  { label: 'Content addresses', to: '/content-addresses' },
+  { label: 'CLI', to: '/eld-cli' },
 ]
 
 function persistTheme(isLight) {
@@ -19,50 +48,75 @@ function persistTheme(isLight) {
   }
 }
 
-function NavLinks({ onNavigate }) {
-  return NAV_LINKS.map((item) => {
-    const className = [
-      'eld-docs-shell__nav-link',
-      item.accent ? 'eld-docs-shell__nav-link--accent' : null,
-    ]
-      .filter(Boolean)
-      .join(' ')
+function ChromeLinks() {
+  return CHROME_LINKS.map((item) => (
+    <a
+      key={item.label}
+      href={item.href}
+      className={[
+        'eld-docs-shell__nav-link',
+        item.accent ? 'eld-docs-shell__nav-link--accent' : null,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+      target="_blank"
+      rel="noreferrer noopener"
+    >
+      {item.label}
+    </a>
+  ))
+}
 
-    if (item.to) {
-      return (
-        <Link
-          key={item.label}
-          to={item.to}
-          isNavLink
-          exact={item.to === '/'}
-          activeClassName="eld-docs-shell__nav-link--active"
-          className={className}
-          onClick={onNavigate}
-        >
-          {item.label}
-        </Link>
-      )
-    }
+function DocsContentNav({ onNavigate }) {
+  return (
+    <ul className="eld-docs-shell__docs-menu">
+      {DOC_NAV.map((item) => {
+        if (item.items) {
+          return (
+            <li key={item.label} className="eld-docs-shell__docs-menu-category">
+              <div className="eld-docs-shell__docs-menu-category-label">{item.label}</div>
+              <ul className="eld-docs-shell__docs-menu">
+                {item.items.map((child) => (
+                  <li key={child.to}>
+                    <Link
+                      to={child.to}
+                      isNavLink
+                      activeClassName="eld-docs-shell__docs-menu-link--active"
+                      className="eld-docs-shell__docs-menu-link"
+                      onClick={onNavigate}
+                    >
+                      {child.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </li>
+          )
+        }
 
-    return (
-      <a
-        key={item.label}
-        href={item.href}
-        className={className}
-        target="_blank"
-        rel="noreferrer noopener"
-        onClick={onNavigate}
-      >
-        {item.label}
-      </a>
-    )
-  })
+        return (
+          <li key={item.to}>
+            <Link
+              to={item.to}
+              isNavLink
+              exact={item.to === '/'}
+              activeClassName="eld-docs-shell__docs-menu-link--active"
+              className="eld-docs-shell__docs-menu-link"
+              onClick={onNavigate}
+            >
+              {item.label}
+            </Link>
+          </li>
+        )
+      })}
+    </ul>
+  )
 }
 
 /**
  * Custom docs chrome navbar — sole color-mode control for this site.
  * themeConfig.colorMode.disableSwitch stays true so Infima's switch is not shown.
- * themeConfig.navbar stays minimal; links and search live here.
+ * Desktop: external chrome links. Mobile burger: docs content (sidebar IA).
  */
 export default function Navbar() {
   const { colorMode, setColorMode } = useColorMode()
@@ -141,8 +195,8 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav id={menuId} className="eld-docs-shell__nav" aria-label="Site">
-          <NavLinks onNavigate={closeMenu} />
+        <nav className="eld-docs-shell__nav eld-docs-shell__nav--chrome" aria-label="Site">
+          <ChromeLinks />
         </nav>
 
         <div className="eld-docs-shell__meta">
@@ -160,6 +214,10 @@ export default function Navbar() {
           </button>
         </div>
       </div>
+
+      <nav id={menuId} className="eld-docs-shell__docs-panel" aria-label="Documentation">
+        <DocsContentNav onNavigate={closeMenu} />
+      </nav>
     </header>
   )
 }
