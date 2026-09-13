@@ -27,6 +27,7 @@ That runs Prettier, ESLint, markdownlint, unit tests, npm audit, and a productio
 
 - Keep pages focused; prefer one topic per page
 - Use relative links between docs pages when possible
+- User-facing CLI examples must use `eld-cli` (not `cargo run`)
 - Do not embed untrusted third-party scripts or opaque HTML
 - Do not commit secrets, credentials, or private deploy config
 

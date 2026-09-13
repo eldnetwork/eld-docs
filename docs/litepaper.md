@@ -30,7 +30,7 @@ Three mechanisms define the protocol:
 | **Proof-of-Capacity Storage** | Disk pre-allocation, Merkle-root commits, epoch challenges                  |
 | **Bounded Chain History**     | Block-range consolidation into `summary_hash` commitments (Stage 2 roadmap) |
 
-Eld targets **~1 second block times**, **~1,000 TPS** at current design targets, **CosmWasm-compatible** smart contracts, and participation from laptops, phones, and edge hardware — not only data-center full nodes.
+Eld targets **~1 second block times**, **~1,000 TPS** at current design targets, **smart contracts**, and participation from laptops, phones, and edge hardware — not only data-center full nodes.
 
 ---
 
@@ -48,7 +48,7 @@ Eld inverts the default: **publishers specify what** (a content hash) **and how 
 
 ### Architecture
 
-Eld is a three-layer stack: **clients** talk to **validator nodes** over REST, RPC, and P2P; each validator runs an **application** (pinboard, accounts, capacity verification, smart contracts) on top of **Tendermint** BFT Proof-of-Stake consensus (~1 second blocks, instant finality).
+Eld is a three-layer stack: **clients** talk to **validator nodes** over REST, RPC, and P2P; each validator runs an **application** (pinboard, accounts, capacity verification) on top of **Tendermint** BFT Proof-of-Stake consensus (~1 second blocks, instant finality).
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -57,7 +57,7 @@ Eld is a three-layer stack: **clients** talk to **validator nodes** over REST, R
                            │ REST / RPC / P2P (libp2p)
 ┌──────────────────────────▼──────────────────────────────────┐
 │  eld_node_app (Rust ABCI)                                   │
-│  Pinboard · CADO state · Capacity challenges · CosmWasm VM  │
+│  Pinboard · CADO state · Capacity challenges                │
 │  Blob garbage collection                                    │
 └──────────────────────────┬──────────────────────────────────┘
                            │ ABCI
@@ -66,7 +66,7 @@ Eld is a three-layer stack: **clients** talk to **validator nodes** over REST, R
 └─────────────────────────────────────────────────────────────┘
 ```
 
-Consensus orders transactions and maintains agreed **application state** — accounts, balances, namespace registrations, pinboard indexes, capacity-provider roots, and contract state. **Payload bytes are not part of that state.** They live in separate off-chain blob storage held by capacity providers. That split is what makes high-throughput ephemeral data possible: the chain stays small and fast; bulk data scales through the storage layer.
+Consensus orders transactions and maintains agreed **application state** — accounts, balances, namespace registrations, pinboard indexes, and capacity-provider roots. **Payload bytes are not part of that state.** They live in separate off-chain blob storage held by capacity providers. That split is what makes high-throughput ephemeral data possible: the chain stays small and fast; bulk data scales through the storage layer.
 
 ### On-chain commitments, off-chain bytes
 
@@ -76,7 +76,7 @@ Every pinboard post records a **commitment** on-chain — a cryptographic hash o
 | --------------------------------------- | --------------------------------- |
 | Content hash, TTL, publisher, namespace | Actual message or file bytes      |
 | Capacity-provider Merkle roots          | Provider disk slots holding blobs |
-| Account balances, staking, contracts    | —                                 |
+| Account balances, staking               | —                                 |
 
 While a post is live, anyone can verify that fetched bytes match the on-chain hash. After TTL, the chain stops serving the body and storage is reclaimed — but the **fact that a commitment was made** remains in consensus history (under Stage 1; older block bodies may be consolidated under Stage 2).
 
@@ -93,7 +93,7 @@ Default pinboard TTL is on the order of **1,000 blocks** (~16 minutes at 1 s/blo
 
 ### Accounts and namespaces
 
-**Accounts** are standard Ed25519 keypairs with an address, balance in ELD, and a sequential nonce for transaction ordering. Accounts pay fees to post, transfer, register names, and interact with contracts.
+**Accounts** are standard Ed25519 keypairs with an address, balance in ELD, and a sequential nonce for transaction ordering. Accounts pay fees to post, transfer, and register names.
 
 **Namespaces** are optional human-readable handles (e.g. `peter` → `@peter`) registered on-chain by an account. They let publishers group content under a verifiable scope — similar to a username or channel — without a central naming service. Namespace registration is permanent chain state; the posts inside a namespace are still ephemeral and TTL-bound.
 
@@ -167,7 +167,7 @@ Post time-bounded content via wallet or dApp: time-limited links, self-destructi
 
 ### Developers and startups
 
-Build on the **pinboard primitive** and **CosmWasm** contracts (`AddContractTx`, `ExecuteContractCallTx`). Reference contracts include fungible tokens, an AMM, and a basic receiver.
+Build on the **pinboard primitive**, namespaces, and content-addressed paths.
 
 | Pattern                     | Approach                                                                              |
 | --------------------------- | ------------------------------------------------------------------------------------- |
@@ -175,9 +175,8 @@ Build on the **pinboard primitive** and **CosmWasm** contracts (`AddContractTx`,
 | Time-limited file share     | `content_key` + encrypted capability tokens expiring with the grant                   |
 | Game sessions               | Matchmaking tickets, room keys, leaderboards anchored for match duration              |
 | IoT / agent scratch space   | High-churn publishes with verifiable publication, no archival burden                  |
-| DeFi + ephemeral metadata   | Tokens, AMM, time-limited escrow alongside pinboard posts                             |
 
-**Integration surface:** Tendermint RPC (`:26657`), node REST (pinboard, namespaces, content upload), JavaScript SDK with React hooks, Rust CLI. Contract state lives under CADO `@contract` paths.
+**Integration surface:** Tendermint RPC (`:26657`), node REST (pinboard, namespaces, content upload), JavaScript SDK with React hooks, and the Rust `eld-cli`.
 
 ### Storage contributors (capacity providers)
 
@@ -206,7 +205,7 @@ Deploy namespaces for branded scopes, run private coordination channels with bui
 
 **Value flows:**
 
-- **Users** pay fees to post data with TTL, transfer, register namespaces, and call contracts.
+- **Users** pay fees to post data with TTL, transfer, and register namespaces.
 - **Validators** earn block rewards and fee shares proportional to stake.
 - **Capacity providers** earn proof-verification rewards; storage deal payments are planned.
 
@@ -230,7 +229,7 @@ Ongoing storage cost stays aligned with TTL — publishers pay for the lifetime 
 
 ## Where Eld is today
 
-The **2026 testnet** validates **Stage 1**: pinboard, namespaces, staking, capacity-provider flows, TTL-gated payloads, blob GC, and CosmWasm. Stage 2 consolidation, enhanced ZK capacity proofs, and production economics hardening are on the roadmap.
+The **2026 testnet** validates **Stage 1**: pinboard, namespaces, staking, capacity-provider flows, TTL-gated payloads, and blob GC. Stage 2 consolidation, enhanced ZK capacity proofs, and production economics hardening are on the roadmap.
 
 Open for audit and integration: `eld_common`, `eld_node_app`, SDK, Chrome wallet, faucet, block explorer.
 

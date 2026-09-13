@@ -57,13 +57,13 @@ Addresses can be used with or without the `0x` prefix in most contexts, but the 
 To create a new account (wallet) in Eld, use the `create-wallet` command:
 
 ```bash
-cargo run -- create-wallet <wallet_name>
+eld-cli create-wallet <wallet_name>
 ```
 
 **Example:**
 
 ```bash
-cargo run -- create-wallet mywallet
+eld-cli create-wallet mywallet
 ```
 
 ### What Happens When You Create a Wallet
@@ -89,10 +89,10 @@ To view wallet information:
 
 ```bash
 # List all wallets
-cargo run -- list-wallets
+eld-cli list-wallets
 
 # Get a specific wallet
-cargo run -- get-wallet <wallet_name>
+eld-cli get-wallet <wallet_name>
 ```
 
 ### Viewing Your Account
@@ -100,13 +100,13 @@ cargo run -- get-wallet <wallet_name>
 To view your on-chain account (balance, nonce):
 
 ```bash
-cargo run -- get-account <address>
+eld-cli get-account <address>
 ```
 
 **Example:**
 
 ```bash
-cargo run -- get-account 0xe17404c417fa10cc04fdf73604fcacca8d0a687c
+eld-cli get-account 0xe17404c417fa10cc04fdf73604fcacca8d0a687c
 ```
 
 ## Account Structure
@@ -145,16 +145,16 @@ The nonce is a counter that tracks the number of transactions sent from this acc
 
 ```bash
 # 1. Create a new wallet
-cargo run -- create-wallet alice
+eld-cli create-wallet alice
 
 # 2. View the wallet to get the address
-cargo run -- get-wallet alice
+eld-cli get-wallet alice
 
 # 3. Request tokens from the faucet (if available)
-cargo run -- request-faucet 0x<your_address>
+eld-cli request-faucet 0x<your_address>
 
 # 4. Check your account balance
-cargo run -- get-account 0x<your_address>
+eld-cli get-account 0x<your_address>
 ```
 
 ### Address Format Examples
@@ -202,4 +202,5 @@ Addresses are serialized as hex strings with the `0x` prefix in JSON:
 
 ## Related Documentation
 
-- TBD
+- [Eld CLI](./eld-cli)
+- [Transactions](./transactions-overview)

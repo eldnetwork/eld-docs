@@ -1,11 +1,11 @@
 ---
 title: Eld CLI
-description: Eld CLI reference — wallets, transfers, staking, pinboard, CADO queries, CosmWasm, and capacity provider commands.
+description: Eld CLI reference — wallets, transfers, staking, pinboard, CADO queries, and capacity provider commands.
 ---
 
 # Eld CLI
 
-The Eld CLI (`eld-cli`) is the command-line interface for interacting with the Eld network. It supports wallet management, transfers, staking, pinboard posts, CADO queries, CosmWasm contracts, and capacity provider daemon control.
+The Eld CLI (`eld-cli`) is the command-line interface for interacting with the Eld network. It supports wallet management, transfers, staking, pinboard posts, CADO queries, and capacity provider daemon control.
 
 Configure the node and endpoints with `--cli-config` (default: `config/config.json`).
 
@@ -69,15 +69,6 @@ Configure the node and endpoints with `--cli-config` (default: `config/config.js
 | ---------------------------- | -------------------------------------------------- |
 | `get-cado <path>`            | Query a CADO by path (e.g. `/@eld/account/0x...`). |
 | `list-cados <search_string>` | List CADO paths matching a prefix (e.g. `/@eld/`). |
-
-### CosmWasm contracts
-
-| Command                                                                       | Description                                                                  |
-| ----------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| `add-contract <wallet_name> <contract_path> <args_json>`                      | Deploy a WASM contract. `args_json` is inline JSON or a path to a JSON file. |
-| `contract-query <contract_id> <field_name>`                                   | Query a contract field.                                                      |
-| `contract-query2 <contract_id> <query_type> <query_args_json>`                | Query by type with JSON args.                                                |
-| `execute-contract <wallet_name> <contract_id> <method_name> <args_json_path>` | Execute a contract method. Use a path to a JSON file; `{}` for no args.      |
 
 ### Capacity provider
 

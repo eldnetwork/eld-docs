@@ -17,7 +17,7 @@ Eld identifies data by **hashes and typed paths** instead of arbitrary server lo
 
 Two layers are worth separating:
 
-1. **CADO** — typed objects in node storage (accounts, epoch records, contract state, and similar), looked up by a **CADO path**
+1. **CADO** — typed objects in node storage (accounts, epoch records, and similar), looked up by a **CADO path**
 2. **Blob content** — raw bytes split into chunks; identified by **content_id** (and used on the P2P content-sync topics)
 
 ---
@@ -47,7 +47,7 @@ Paths under the Eld root scope follow:
 - **type** is a known segment such as `account` or `epoch_record`
 - **name** is always a `0x` prefix plus hex:
   - **40 hex characters** (20 bytes) for account-like types — same shape as a wallet address
-  - **64 hex characters** (32 bytes) for hash-like types — contract IDs, epoch keys, snapshot IDs, etc.
+  - **64 hex characters** (32 bytes) for hash-like types — epoch keys, snapshot IDs, etc.
 
 ### Examples you can copy
 
@@ -75,12 +75,6 @@ Paths under the Eld root scope follow:
 /@eld/epoch_record/0x0000000000000000000000000000000000000000000000000000000000000001
 ```
 
-**Contract state** (32-byte contract id):
-
-```text
-/@eld/contract_state/0x0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef
-```
-
 When querying the node, pass the **full path** (URL-encoded if it appears in a URL). The CLI accepts the path as a single argument:
 
 ```bash
@@ -95,9 +89,8 @@ These `type` segments match the allow-list in `eld_common` (3-part paths only):
 | Category           | `type` values                                                                                              |
 | ------------------ | ---------------------------------------------------------------------------------------------------------- |
 | Accounts           | `account`, `staking_account`, `storage_staking_account`                                                    |
-| Contracts          | `contract_info`, `contract_state`, `cado_map`                                                              |
 | Chain / snapshots  | `state_version`, `epoch_record`, `trie_snapshot`, `snapshot_metadata`, `snapshot_chunk`, `chunk_reference` |
-| Namespace registry | `namespace`                                                                                                | Slug segment (not `0x` hex) — see below |
+| Namespace registry | `namespace`                                                                                                |
 
 Related path prefixes also exist for **content manifests** (`/@eld/content_manifest/...`) and **account content** indexes; manifests use the same 64-hex `name` pattern.
 

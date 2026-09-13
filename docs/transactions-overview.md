@@ -34,8 +34,6 @@ Transactions are submitted to an Eld node (HTTP/RPC); the node broadcasts them t
 | **VerifiedProof**            | Capacity validator            | Record that a provider passed a capacity challenge for an epoch        |
 | **PostMessage**              | Validator (on behalf of user) | Commit a pinboard post after the user signed the message               |
 | **AddNamespace**             | Any account                   | Register a custom namespace slug (maps to scope `@slug`)               |
-| **AddContract**              | Deployer                      | Upload and instantiate a CosmWasm WASM contract                        |
-| **ExecuteContractCall**      | Any account                   | Call an execute method on a deployed contract                          |
 
 Below is a high-level description of each. Amount fields use the chain’s native token representation (fixed-point integer units).
 
@@ -104,10 +102,6 @@ On commit, an immutable registry CADO is written at `/@eld/namespace/{namespace_
 eld-cli add-namespace <wallet_name> <namespace_slug>
 eld-cli get-namespace <namespace_slug>
 ```
-
-### AddContract and ExecuteContractCall
-
-CosmWasm contracts are deployed with **AddContract** (WASM bytecode + instantiate JSON) and invoked with **ExecuteContractCall** (contract id, method name, JSON args). These remain available on the chain and in `eld-cli` but are not covered in a dedicated docs section here.
 
 ## Fees and lifecycle
 
