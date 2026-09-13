@@ -7,7 +7,16 @@ description: Official docs for Eld — an ephemeral, content-addressed blockchai
 
 # Welcome to Eld Docs
 
-<img src="/img/mascot_500.png" alt="Eld mascot" width="250" />
+<picture>
+  <source type="image/avif" srcSet="/img/mascot_500.avif" />
+  <source type="image/webp" srcSet="/img/mascot_500.webp" />
+  <img
+    src="/img/mascot_500.png"
+    alt="Eld mascot"
+    width={250}
+    height={310}
+  />
+</picture>
 
 Eld is a decentralized network for **short-lived digital information** — messages, files, session data, and app state that should exist only as long as it is useful, then disappear on its own.
 

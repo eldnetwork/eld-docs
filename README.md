@@ -7,7 +7,7 @@
 
 Documentation site for the [Eld](https://www.eld.network) blockchain, built with [Docusaurus](https://docusaurus.io/).
 
-This repository is the public documentation site only — not the Eld protocol, node software, or SDKs. For the marketing site and live chain, see [eld.network](https://www.eld.network) and the [block explorer](https://explorer.eld.network).
+This repository is the public documentation site only — not the Eld protocol, node software, or SDKs. For the marketing site and live chain, see [eld.network](https://www.eld.network).
 
 **Live site:** [https://docs.eld.network](https://docs.eld.network)
 
@@ -44,13 +44,15 @@ npm run serve
 npm run ci
 ```
 
-Runs Prettier (including Markdown) and a production build.
+Runs Prettier (including Markdown), `npm audit` on production deps (fails on critical+; Docusaurus still reports known unfixed highs), and a production build.
 
 ## Links
 
 - [Eld website](https://www.eld.network)
 - [Block explorer](https://explorer.eld.network)
 - [X / Twitter](https://x.com/eld_network)
+- [Contributing](CONTRIBUTING.md)
+- [Security policy](SECURITY.md)
 
 ## License
 

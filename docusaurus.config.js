@@ -72,7 +72,8 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.js',
-          editUrl: 'https://github.com/eldnetwork/eld-docs/tree/main/',
+          editUrl: 'https://github.com/eldnetwork/eld-docs/edit/main/',
+          showLastUpdateTime: true,
         },
         blog: false,
         theme: {
