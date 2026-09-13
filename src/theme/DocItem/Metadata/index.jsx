@@ -1,12 +1,12 @@
-import Head from '@docusaurus/Head'
-import { PageMetadata } from '@docusaurus/theme-common'
-import { useDoc } from '@docusaurus/plugin-content-docs/client'
+import Head from '@docusaurus/Head';
+import { PageMetadata } from '@docusaurus/theme-common';
+import { useDoc } from '@docusaurus/plugin-content-docs/client';
 
 function normalizePermalink(permalink) {
   if (!permalink || permalink === '/') {
-    return '/'
+    return '/';
   }
-  return permalink.endsWith('/') ? permalink.slice(0, -1) : permalink
+  return permalink.endsWith('/') ? permalink.slice(0, -1) : permalink;
 }
 
 /**
@@ -14,8 +14,8 @@ function normalizePermalink(permalink) {
  * JSON-LD lives in DocBreadcrumbs/StructuredData (single ld+json script).
  */
 export default function DocItemMetadata() {
-  const { metadata, frontMatter, assets } = useDoc()
-  const isHome = normalizePermalink(metadata.permalink) === '/'
+  const { metadata, frontMatter, assets } = useDoc();
+  const isHome = normalizePermalink(metadata.permalink) === '/';
 
   return (
     <>
@@ -29,5 +29,5 @@ export default function DocItemMetadata() {
         <meta property="og:type" content={isHome ? 'website' : 'article'} />
       </Head>
     </>
-  )
+  );
 }

@@ -11,5 +11,5 @@ export default function Link({
     <a href={to || href} {...props}>
       {children}
     </a>
-  )
+  );
 }

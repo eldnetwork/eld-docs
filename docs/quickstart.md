@@ -45,11 +45,11 @@ Learn envelopes and other types in [Transactions](./transactions-overview).
 
 ## Next steps
 
-| Goal                         | Page                                              |
-| ---------------------------- | ------------------------------------------------- |
-| Understand the protocol      | [Litepaper](./litepaper)                          |
-| Register `@yourname`         | [Custom namespaces](./namespaces)                 |
-| Post TTL-bounded content     | [Eld CLI](./eld-cli) pinboard commands            |
-| Provide storage capacity     | [Capacity provider](./capacity-provider)          |
-| Browse addresses and CADOs   | [Content addresses](./content-addresses)          |
-| Common questions             | [FAQ](./faq)                                      |
+| Goal                       | Page                                     |
+| -------------------------- | ---------------------------------------- |
+| Understand the protocol    | [Litepaper](./litepaper)                 |
+| Register `@yourname`       | [Custom namespaces](./namespaces)        |
+| Post TTL-bounded content   | [Eld CLI](./eld-cli) pinboard commands   |
+| Provide storage capacity   | [Capacity provider](./capacity-provider) |
+| Browse addresses and CADOs | [Content addresses](./content-addresses) |
+| Common questions           | [FAQ](./faq)                             |

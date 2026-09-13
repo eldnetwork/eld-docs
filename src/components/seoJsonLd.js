@@ -11,7 +11,7 @@ export const ORGANIZATION = {
   sameAs: ['https://x.com/eld_network', 'https://github.com/eldnetwork'],
   description:
     'Eld is a decentralized protocol for ephemeral, content-addressed storage. Set a TTL, verify data while it is live, and let it expire.',
-}
+};
 
 /** Paths that should use TechArticle (long-form protocol narrative). */
 export const TECH_ARTICLE_PATHS = new Set([
@@ -21,13 +21,13 @@ export const TECH_ARTICLE_PATHS = new Set([
   '/capacity-provider',
   '/capacity-provider-p2p-protocol',
   '/namespaces',
-])
+]);
 
 /**
  * @param {{ siteUrl: string, permalink: string, title: string, description?: string }} opts
  */
 export function buildWebSiteJsonLd({ siteUrl, permalink, title, description }) {
-  const isHome = permalink === '/' || permalink === ''
+  const isHome = permalink === '/' || permalink === '';
   /** @type {Record<string, unknown>} */
   const data = {
     '@context': 'https://schema.org',
@@ -43,7 +43,7 @@ export function buildWebSiteJsonLd({ siteUrl, permalink, title, description }) {
       name: 'Eld',
       url: 'https://www.eld.network',
     },
-  }
+  };
 
   if (isHome) {
     data.potentialAction = {
@@ -53,24 +53,18 @@ export function buildWebSiteJsonLd({ siteUrl, permalink, title, description }) {
         urlTemplate: `${siteUrl}/?q={search_term_string}`,
       },
       'query-input': 'required name=search_term_string',
-    }
+    };
   }
 
   // Keep title available for consumers that inspect this object (not in schema).
-  void title
-  return data
+  void title;
+  return data;
 }
 
 /**
  * @param {{ siteUrl: string, permalink: string, title: string, description?: string, dateModified?: string }} opts
  */
-export function buildTechArticleJsonLd({
-  siteUrl,
-  permalink,
-  title,
-  description,
-  dateModified,
-}) {
+export function buildTechArticleJsonLd({ siteUrl, permalink, title, description, dateModified }) {
   /** @type {Record<string, unknown>} */
   const data = {
     '@context': 'https://schema.org',
@@ -94,11 +88,11 @@ export function buildTechArticleJsonLd({
         url: 'https://www.eld.network/eld-logo-150.png',
       },
     },
-  }
+  };
   if (dateModified) {
-    data.dateModified = dateModified
+    data.dateModified = dateModified;
   }
-  return data
+  return data;
 }
 
 /**
@@ -111,7 +105,7 @@ export function buildBreadcrumbJsonLd({ siteUrl, permalink, title, breadcrumbs }
       : [
           { name: 'Docs', path: '/' },
           { name: title, path: permalink },
-        ]
+        ];
 
   return {
     '@context': 'https://schema.org',
@@ -122,5 +116,5 @@ export function buildBreadcrumbJsonLd({ siteUrl, permalink, title, breadcrumbs }
       name: crumb.name,
       item: `${siteUrl}${crumb.path === '/' ? '' : crumb.path}`,
     })),
-  }
+  };
 }

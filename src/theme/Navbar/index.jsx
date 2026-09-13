@@ -1,17 +1,17 @@
-import { useEffect, useId, useState } from 'react'
-import Link from '@docusaurus/Link'
-import { useColorMode } from '@docusaurus/theme-common'
-import SearchBar from '@theme/SearchBar'
-import { MoonIcon, SunIcon } from '@site/src/components/ThemeIcons'
+import { useEffect, useId, useState } from 'react';
+import Link from '@docusaurus/Link';
+import { useColorMode } from '@docusaurus/theme-common';
+import SearchBar from '@theme/SearchBar';
+import { MoonIcon, SunIcon } from '@site/src/components/ThemeIcons';
 
-export const THEME_STORAGE_KEY = 'eld-docs-theme'
+export const THEME_STORAGE_KEY = 'eld-docs-theme';
 
 /** External chrome — desktop header only */
 const CHROME_LINKS = [
   { label: 'GitHub', href: 'https://github.com/eldnetwork' },
   { label: 'Website', href: 'https://www.eld.network' },
   { label: 'Explorer', href: 'https://explorer.eld.network', accent: true },
-]
+];
 
 /**
  * Docs content — mirrors sidebars.js labels (what the burger opens on mobile).
@@ -42,11 +42,11 @@ export const DOC_NAV = [
   { label: 'Custom namespaces', to: '/namespaces' },
   { label: 'Content addresses', to: '/content-addresses' },
   { label: 'CLI', to: '/eld-cli' },
-]
+];
 
 function persistTheme(isLight) {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem(THEME_STORAGE_KEY, isLight ? 'light' : 'dark')
+    window.localStorage.setItem(THEME_STORAGE_KEY, isLight ? 'light' : 'dark');
   }
 }
 
@@ -66,7 +66,7 @@ function ChromeLinks() {
     >
       {item.label}
     </a>
-  ))
+  ));
 }
 
 function DocsContentNav({ onNavigate }) {
@@ -93,7 +93,7 @@ function DocsContentNav({ onNavigate }) {
                 ))}
               </ul>
             </li>
-          )
+          );
         }
 
         return (
@@ -109,10 +109,10 @@ function DocsContentNav({ onNavigate }) {
               {item.label}
             </Link>
           </li>
-        )
+        );
       })}
     </ul>
-  )
+  );
 }
 
 /**
@@ -121,54 +121,54 @@ function DocsContentNav({ onNavigate }) {
  * Desktop: external chrome links. Mobile burger: docs content (sidebar IA).
  */
 export default function Navbar() {
-  const { colorMode, setColorMode } = useColorMode()
-  const isLight = colorMode === 'light'
-  const [menuOpen, setMenuOpen] = useState(false)
-  const menuId = useId()
+  const { colorMode, setColorMode } = useColorMode();
+  const isLight = colorMode === 'light';
+  const [menuOpen, setMenuOpen] = useState(false);
+  const menuId = useId();
 
   useEffect(() => {
     if (typeof window === 'undefined') {
-      return
+      return;
     }
-    const stored = window.localStorage.getItem(THEME_STORAGE_KEY)
+    const stored = window.localStorage.getItem(THEME_STORAGE_KEY);
     // Migrate legacy explorer/home key if present
-    const legacy = window.localStorage.getItem('eld-home-theme')
-    const preferred = stored ?? legacy
-    setColorMode(preferred === 'light' ? 'light' : 'dark')
-  }, [setColorMode])
+    const legacy = window.localStorage.getItem('eld-home-theme');
+    const preferred = stored ?? legacy;
+    setColorMode(preferred === 'light' ? 'light' : 'dark');
+  }, [setColorMode]);
 
   useEffect(() => {
     if (!menuOpen) {
-      return undefined
+      return undefined;
     }
 
     const onKeyDown = (event) => {
       if (event.key === 'Escape') {
-        setMenuOpen(false)
+        setMenuOpen(false);
       }
-    }
+    };
 
     const onResize = () => {
       if (window.matchMedia('(min-width: 901px)').matches) {
-        setMenuOpen(false)
+        setMenuOpen(false);
       }
-    }
+    };
 
-    window.addEventListener('keydown', onKeyDown)
-    window.addEventListener('resize', onResize)
+    window.addEventListener('keydown', onKeyDown);
+    window.addEventListener('resize', onResize);
     return () => {
-      window.removeEventListener('keydown', onKeyDown)
-      window.removeEventListener('resize', onResize)
-    }
-  }, [menuOpen])
+      window.removeEventListener('keydown', onKeyDown);
+      window.removeEventListener('resize', onResize);
+    };
+  }, [menuOpen]);
 
   const handleThemeToggle = () => {
-    const nextIsLight = !isLight
-    persistTheme(nextIsLight)
-    setColorMode(nextIsLight ? 'light' : 'dark')
-  }
+    const nextIsLight = !isLight;
+    persistTheme(nextIsLight);
+    setColorMode(nextIsLight ? 'light' : 'dark');
+  };
 
-  const closeMenu = () => setMenuOpen(false)
+  const closeMenu = () => setMenuOpen(false);
 
   return (
     <header
@@ -221,5 +221,5 @@ export default function Navbar() {
         <DocsContentNav onNavigate={closeMenu} />
       </nav>
     </header>
-  )
+  );
 }

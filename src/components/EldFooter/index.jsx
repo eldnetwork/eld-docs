@@ -1,4 +1,4 @@
-import Link from '@docusaurus/Link'
+import Link from '@docusaurus/Link';
 
 const footerColumns = [
   {
@@ -29,7 +29,7 @@ const footerColumns = [
     heading: 'Community',
     items: [{ label: 'X', href: 'https://x.com/eld_network' }],
   },
-]
+];
 
 export default function EldFooter() {
   return (
@@ -44,7 +44,7 @@ export default function EldFooter() {
                   <Link key={item.label} to={item.to} className="eld-docs-footer__item">
                     {item.label}
                   </Link>
-                )
+                );
               }
 
               if (item.href) {
@@ -58,14 +58,14 @@ export default function EldFooter() {
                   >
                     {item.label}
                   </a>
-                )
+                );
               }
 
               return (
                 <span key={item.label} className="eld-docs-footer__item">
                   {item.label}
                 </span>
-              )
+              );
             })}
           </div>
         ))}
@@ -74,5 +74,5 @@ export default function EldFooter() {
         <span>© 2026 ELD NETWORK. ALL RIGHTS RESERVED.</span>
       </div>
     </footer>
-  )
+  );
 }

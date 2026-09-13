@@ -1,18 +1,18 @@
-import Head from '@docusaurus/Head'
-import { useDoc } from '@docusaurus/plugin-content-docs/client'
-import { useBreadcrumbsStructuredData } from '@docusaurus/plugin-content-docs/client'
-import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
+import Head from '@docusaurus/Head';
+import { useDoc } from '@docusaurus/plugin-content-docs/client';
+import { useBreadcrumbsStructuredData } from '@docusaurus/plugin-content-docs/client';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import {
   TECH_ARTICLE_PATHS,
   buildTechArticleJsonLd,
   buildWebSiteJsonLd,
-} from '@site/src/components/seoJsonLd'
+} from '@site/src/components/seoJsonLd';
 
 function normalizePermalink(permalink) {
   if (!permalink || permalink === '/') {
-    return '/'
+    return '/';
   }
-  return permalink.endsWith('/') ? permalink.slice(0, -1) : permalink
+  return permalink.endsWith('/') ? permalink.slice(0, -1) : permalink;
 }
 
 /**
@@ -20,17 +20,17 @@ function normalizePermalink(permalink) {
  * Organization is emitted once via docusaurus.config.js headTags.
  */
 export default function DocBreadcrumbsStructuredData({ breadcrumbs }) {
-  const crumbList = useBreadcrumbsStructuredData({ breadcrumbs })
-  const { metadata } = useDoc()
-  const { siteConfig } = useDocusaurusContext()
-  const siteUrl = siteConfig.url.replace(/\/$/, '')
-  const permalink = normalizePermalink(metadata.permalink)
-  const isHome = permalink === '/'
-  const description = metadata.description || siteConfig.tagline
-  const title = metadata.title
+  const crumbList = useBreadcrumbsStructuredData({ breadcrumbs });
+  const { metadata } = useDoc();
+  const { siteConfig } = useDocusaurusContext();
+  const siteUrl = siteConfig.url.replace(/\/$/, '');
+  const permalink = normalizePermalink(metadata.permalink);
+  const isHome = permalink === '/';
+  const description = metadata.description || siteConfig.tagline;
+  const title = metadata.title;
 
   /** @type {Record<string, unknown>[]} */
-  const graph = []
+  const graph = [];
 
   if (isHome) {
     const website = buildWebSiteJsonLd({
@@ -38,9 +38,9 @@ export default function DocBreadcrumbsStructuredData({ breadcrumbs }) {
       permalink,
       title,
       description,
-    })
-    const { ['@context']: _c, ...rest } = website
-    graph.push(rest)
+    });
+    const { ['@context']: _c, ...rest } = website;
+    graph.push(rest);
   }
 
   if (TECH_ARTICLE_PATHS.has(permalink)) {
@@ -52,13 +52,13 @@ export default function DocBreadcrumbsStructuredData({ breadcrumbs }) {
       dateModified: metadata.lastUpdatedAt
         ? new Date(metadata.lastUpdatedAt).toISOString()
         : undefined,
-    })
-    const { ['@context']: _c, ...rest } = article
-    graph.push(rest)
+    });
+    const { ['@context']: _c, ...rest } = article;
+    graph.push(rest);
   }
 
-  const { ['@context']: _bc, ...breadcrumbRest } = crumbList
-  graph.push(breadcrumbRest)
+  const { ['@context']: _bc, ...breadcrumbRest } = crumbList;
+  graph.push(breadcrumbRest);
 
   return (
     <Head>
@@ -69,5 +69,5 @@ export default function DocBreadcrumbsStructuredData({ breadcrumbs }) {
         })}
       </script>
     </Head>
-  )
+  );
 }

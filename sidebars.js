@@ -31,6 +31,6 @@ const sidebars = {
     { type: 'doc', id: 'content-addresses', label: 'Content addresses' },
     { type: 'doc', id: 'eld-cli', label: 'CLI' },
   ],
-}
+};
 
-export default sidebars
+export default sidebars;

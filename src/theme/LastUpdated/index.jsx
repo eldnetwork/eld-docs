@@ -1,4 +1,4 @@
-import OriginalLastUpdated from '@theme-original/LastUpdated'
+import OriginalLastUpdated from '@theme-original/LastUpdated';
 
 /**
  * Upstream shows a fake "Oct 14, 2018 (Simulated during dev…)" date in
@@ -6,7 +6,7 @@ import OriginalLastUpdated from '@theme-original/LastUpdated'
  */
 export default function LastUpdated(props) {
   if (process.env.NODE_ENV === 'development') {
-    return null
+    return null;
   }
-  return <OriginalLastUpdated {...props} />
+  return <OriginalLastUpdated {...props} />;
 }

@@ -4,12 +4,12 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import { themes as prismThemes } from 'prism-react-renderer'
+import { themes as prismThemes } from 'prism-react-renderer';
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const DEFAULT_DESCRIPTION =
-  'Eld docs — ephemeral, content-addressed decentralized storage with TTL, namespaces, and capacity providers.'
+  'Eld docs — ephemeral, content-addressed decentralized storage with TTL, namespaces, and capacity providers.';
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -186,6 +186,6 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
-}
+};
 
-export default config
+export default config;

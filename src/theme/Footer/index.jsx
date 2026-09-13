@@ -1,5 +1,5 @@
-import EldFooter from '@site/src/components/EldFooter'
+import EldFooter from '@site/src/components/EldFooter';
 
 export default function Footer() {
-  return <EldFooter />
+  return <EldFooter />;
 }

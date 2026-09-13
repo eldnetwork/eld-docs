@@ -26,12 +26,12 @@ This site is the task-oriented docs hub. For the long-form protocol narrative, r
 
 ## Start here
 
-| Task                              | Page                                           |
-| --------------------------------- | ---------------------------------------------- |
-| Wallet, faucet, first transfer    | [Get started with Eld](./quickstart)           |
-| Protocol overview                 | [Litepaper](./litepaper)                       |
-| CLI commands                      | [Eld CLI reference](./eld-cli)                 |
-| Common questions                  | [FAQ](./faq)                                   |
+| Task                           | Page                                 |
+| ------------------------------ | ------------------------------------ |
+| Wallet, faucet, first transfer | [Get started with Eld](./quickstart) |
+| Protocol overview              | [Litepaper](./litepaper)             |
+| CLI commands                   | [Eld CLI reference](./eld-cli)       |
+| Common questions               | [FAQ](./faq)                         |
 
 ## Core topics
 
