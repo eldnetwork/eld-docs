@@ -1,6 +1,6 @@
 ---
-title: Roadmap
-description: Planned milestones for Eld in 2026 and 2027
+title: Eld roadmap 2026–2027
+description: Planned Eld milestones for 2026 and 2027 — testnet, namespaces, bridges, and mainnet features.
 ---
 
 # Roadmap

@@ -6,7 +6,9 @@
 const sidebars = {
   docs: [
     'intro',
+    'quickstart',
     'litepaper',
+    'faq',
     'roadmap',
     { type: 'doc', id: 'consensus', label: 'Consensus' },
     { type: 'doc', id: 'accounts-overview', label: 'Accounts' },

@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://docs.eld.network/sitemap.xml
+# LLM-oriented index: https://docs.eld.network/llms.txt

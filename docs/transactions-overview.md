@@ -1,9 +1,9 @@
 ---
-title: Transactions Overview
-description: Signed transactions in Eld — envelopes, types, fees, and how validators order and validate on-chain actions.
+title: Eld transactions and fees
+description: Signed Eld transactions — envelope fields, types, fees, and how validators order and validate on-chain actions.
 ---
 
-# Transactions in Eld
+# Eld transactions and fees
 
 Every on-chain action in Eld is a **signed transaction**: a payload describing what should happen, plus metadata (nonce, fee, public key, signature). Validators order transactions into blocks through BFT consensus; the Eld application validates each transaction and updates state.
 

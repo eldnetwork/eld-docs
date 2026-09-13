@@ -1,9 +1,9 @@
 ---
-title: Capacity Provider Overview
-description: How Eld capacity providers allocate storage slots, commit Merkle roots on-chain, and pass verification challenges.
+title: Run an Eld capacity provider
+description: Allocate Eld storage slots, commit Merkle roots on-chain, pass capacity challenges, and earn verification rewards.
 ---
 
-# Capacity Provider
+# Run an Eld capacity provider
 
 How a capacity provider works in the Eld network: what it does, slot allocation, on-chain transactions, and a brief overview of the P2P protocol.
 

@@ -1,9 +1,9 @@
 ---
-title: Accounts Overview
-description: How Eld accounts work — addresses, balances, nonces, and creating wallets with the CLI.
+title: Eld accounts and Ed25519 addresses
+description: How Eld accounts work — Ed25519 addresses, balances, nonces, and creating wallets with eld-cli.
 ---
 
-# Accounts
+# Eld accounts and Ed25519 addresses
 
 This document explains how accounts work in the Eld network, including address creation, representation, and how to create accounts using the CLI.
 

@@ -9,6 +9,8 @@ describe('EldFooter', () => {
     expect(screen.getByRole('link', { name: 'Litepaper' })).toHaveAttribute('href', '/litepaper')
     expect(screen.getByRole('link', { name: 'Roadmap' })).toHaveAttribute('href', '/roadmap')
     expect(screen.getByRole('link', { name: 'Docs' })).toHaveAttribute('href', '/')
+    expect(screen.getByRole('link', { name: 'Quickstart' })).toHaveAttribute('href', '/quickstart')
+    expect(screen.getByRole('link', { name: 'FAQ' })).toHaveAttribute('href', '/faq')
     expect(screen.getByRole('link', { name: 'Explorer' })).toHaveAttribute(
       'href',
       'https://explorer.eld.network',

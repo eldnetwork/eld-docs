@@ -44,10 +44,7 @@ describe('Navbar', () => {
     await user.click(menuButton)
 
     const docs = screen.getByRole('navigation', { name: 'Documentation' })
-    expect(within(docs).getByRole('link', { name: 'Welcome to Eld Docs' })).toHaveAttribute(
-      'href',
-      '/',
-    )
+    expect(within(docs).getByRole('link', { name: 'Eld docs' })).toHaveAttribute('href', '/')
     expect(within(docs).getByRole('link', { name: 'Consensus' })).toHaveAttribute(
       'href',
       '/consensus',
@@ -63,7 +60,7 @@ describe('Navbar', () => {
       '/capacity-provider',
     )
 
-    await user.click(within(docs).getByRole('link', { name: 'Welcome to Eld Docs' }))
+    await user.click(within(docs).getByRole('link', { name: 'Eld docs' }))
     expect(screen.getByRole('button', { name: /open menu/i })).toHaveAttribute(
       'aria-expanded',
       'false',

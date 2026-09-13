@@ -1,8 +1,3 @@
----
-title: 'Eld litepaper — ephemeral data storage protocol'
-description: Eld litepaper for developers and operators — ephemeral content-addressed storage, pinboard TTL, and capacity.
----
-
 # Eld Litepaper: The Eld Ephemeral Data Storage Protocol
 
 **Eld Network · July 2026**

@@ -1,5 +1,5 @@
 ---
-title: Custom Namespaces
+title: Eld custom namespaces
 description: Register custom @namespace slugs on Eld and publish pinboard content under namespace paths.
 ---
 

@@ -1,6 +1,6 @@
 ---
-title: Content-Addressability and CADO in Eld
-description: CADO paths, content IDs, and content-addressable storage in Eld — integrity, deduplication, and lookups.
+title: Eld CADO paths and content IDs
+description: Content-addressed data objects (CADO) in Eld — paths, content IDs, integrity, deduplication, and lookups.
 ---
 
 # Content-Addressability and CADO in Eld

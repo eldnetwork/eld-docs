@@ -8,11 +8,18 @@ import { themes as prismThemes } from 'prism-react-renderer'
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
+const DEFAULT_DESCRIPTION =
+  'Eld docs — ephemeral, content-addressed decentralized storage with TTL, namespaces, and capacity providers.'
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'Eld Blockchain Documentation',
+  title: 'Eld Docs',
   tagline: 'Ephemeral, content-addressed decentralized storage',
   favicon: 'img/favicon.ico',
+
+  // Canonical URLs without trailing slash (avoid / vs no-slash sitemap duplicates).
+  // Confirm the CDN/host 301s https://docs.eld.network/ → https://docs.eld.network when trailingSlash is false.
+  trailingSlash: false,
 
   headTags: [
     {
@@ -30,11 +37,55 @@ const config = {
       },
     },
     {
-      tagName: 'meta',
+      tagName: 'link',
       attributes: {
-        property: 'og:type',
-        content: 'website',
+        rel: 'icon',
+        type: 'image/svg+xml',
+        href: '/img/favicon.svg',
       },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/img/favicon-32x32.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/img/favicon-16x16.png',
+      },
+    },
+    {
+      tagName: 'link',
+      attributes: {
+        rel: 'apple-touch-icon',
+        sizes: '180x180',
+        href: '/img/apple-touch-icon.png',
+      },
+    },
+    {
+      tagName: 'script',
+      attributes: {
+        type: 'application/ld+json',
+      },
+      // Matches www.eld.network Organization (sameAs + logo).
+      innerHTML: JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Organization',
+        name: 'Eld',
+        url: 'https://www.eld.network',
+        logo: 'https://www.eld.network/eld-logo-150.png',
+        sameAs: ['https://x.com/eld_network', 'https://github.com/eldnetwork'],
+        description:
+          'Eld is a decentralized protocol for ephemeral, content-addressed storage. Set a TTL, verify data while it is live, and let it expire.',
+      }),
     },
   ],
 
@@ -80,6 +131,12 @@ const config = {
         theme: {
           customCss: './src/css/custom.css',
         },
+        sitemap: {
+          lastmod: 'date',
+          changefreq: 'weekly',
+          priority: 0.5,
+          ignorePatterns: ['/search/**', '/tags/**'],
+        },
       }),
     ],
   ],
@@ -100,6 +157,17 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       image: 'img/og-1200x630.png',
+      metadata: [
+        { name: 'description', content: DEFAULT_DESCRIPTION },
+        { name: 'robots', content: 'index, follow' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: 'twitter:site', content: '@eld_network' },
+        { name: 'twitter:image', content: 'https://docs.eld.network/img/og-1200x630.png' },
+        {
+          name: 'twitter:image:alt',
+          content: 'Eld — ephemeral decentralized storage documentation',
+        },
+      ],
       // Official ColorModeToggle is disabled on purpose: the swizzled Navbar
       // (`src/theme/Navbar`) is the only theme control (custom ThemeIcons +
       // localStorage key `eld-docs-theme`). Do not set disableSwitch: false

@@ -1,0 +1,25 @@
+# Eld Docs
+
+> Official documentation for Eld — a Proof-of-Stake blockchain for time-bounded, content-addressed (ephemeral) data storage.
+
+## Site
+
+- Home: https://docs.eld.network
+- Marketing: https://www.eld.network
+- Explorer: https://explorer.eld.network
+- GitHub: https://github.com/eldnetwork
+
+## Key pages
+
+- [Quickstart](https://docs.eld.network/quickstart): create a wallet, faucet, first transfer
+- [Litepaper](https://docs.eld.network/litepaper): protocol narrative (pinboard, capacity, TTL)
+- [Litepaper (Markdown)](https://docs.eld.network/litepaper.md): raw protocol narrative for citation
+- [FAQ](https://docs.eld.network/faq): ephemeral storage, CADO, testnet
+- [Eld CLI](https://docs.eld.network/eld-cli): `eld-cli` command reference
+- [Accounts](https://docs.eld.network/accounts-overview): Ed25519 addresses and wallets
+- [Capacity providers](https://docs.eld.network/capacity-provider): storage slots and challenges
+- [Custom namespaces](https://docs.eld.network/namespaces): `@slug` registration and uploads
+
+## Optional
+
+- [Sitemap](https://docs.eld.network/sitemap.xml)

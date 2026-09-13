@@ -1,6 +1,6 @@
 ---
-title: Eld CLI
-description: Eld CLI reference — wallets, transfers, staking, pinboard, CADO queries, and capacity provider commands.
+title: Eld CLI reference
+description: Eld CLI (eld-cli) reference — wallets, transfers, staking, pinboard, CADO queries, and capacity provider commands.
 ---
 
 # Eld CLI

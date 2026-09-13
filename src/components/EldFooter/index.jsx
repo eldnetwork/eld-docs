@@ -14,6 +14,8 @@ const footerColumns = [
       { label: 'Litepaper', to: '/litepaper' },
       { label: 'Roadmap', to: '/roadmap' },
       { label: 'Docs', to: '/' },
+      { label: 'Quickstart', to: '/quickstart' },
+      { label: 'FAQ', to: '/faq' },
     ],
   },
   {

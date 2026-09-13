@@ -18,11 +18,13 @@ const CHROME_LINKS = [
  * Keep in sync with `sidebars.js`.
  */
 export const DOC_NAV = [
-  { label: 'Welcome to Eld Docs', to: '/' },
+  { label: 'Eld docs', to: '/' },
+  { label: 'Get started with Eld', to: '/quickstart' },
   {
-    label: 'Eld Litepaper: The Eld Ephemeral Data Storage Protocol',
+    label: 'Eld litepaper — ephemeral data storage protocol',
     to: '/litepaper',
   },
+  { label: 'FAQ', to: '/faq' },
   { label: 'Roadmap', to: '/roadmap' },
   { label: 'Consensus', to: '/consensus' },
   { label: 'Accounts', to: '/accounts-overview' },

@@ -1,9 +1,9 @@
 ---
-title: Consensus
-description: How Eld validators agree on block order, finality, and role rotation using Byzantine Fault Tolerant consensus.
+title: Eld BFT consensus and epochs
+description: How Eld validators agree on block order, finality, and role rotation with Byzantine Fault Tolerant consensus.
 ---
 
-# Consensus in Eld
+# Eld BFT consensus and epochs
 
 This page describes how the Eld network agrees on a single, ordered history of transactions and how validator roles rotate over time. It is an overview of the design—not an implementation guide.
 

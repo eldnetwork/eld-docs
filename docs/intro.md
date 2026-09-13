@@ -1,11 +1,11 @@
 ---
 sidebar_position: 1
 slug: /
-title: Welcome to Eld Docs
-description: Official docs for Eld — an ephemeral, content-addressed blockchain for temporary decentralized storage, namespaces, and capacity providers.
+title: Eld docs — ephemeral decentralized storage
+description: Official Eld documentation hub — ephemeral content-addressed storage, quickstart, litepaper, CLI, and capacity providers.
 ---
 
-# Welcome to Eld Docs
+# Eld docs
 
 <picture>
   <source type="image/avif" srcSet="/img/mascot_500.avif" />
@@ -15,64 +15,37 @@ description: Official docs for Eld — an ephemeral, content-addressed blockchai
     alt="Eld mascot"
     width={250}
     height={310}
+    loading="eager"
+    decoding="async"
   />
 </picture>
 
-Eld is a decentralized network for **short-lived digital information** — messages, files, session data, and app state that should exist only as long as it is useful, then disappear on its own.
+Eld is a decentralized network for **short-lived digital information** — messages, files, session data, and app state that exist only as long as they are useful, then expire by protocol.
 
-The name comes from an old Nordic word for _fire_: data that burns bright, serves its purpose, and fades.
+This site is the task-oriented docs hub. For the long-form protocol narrative, read the [litepaper](./litepaper).
 
-Think of Eld as a **shared scratchpad for the internet** — not a permanent archive like most blockchains, and not a walled garden like a single cloud provider. Anyone can publish; everyone can verify while content is live; nothing is kept forever by default.
+## Start here
 
-## The problem Eld solves
+| Task                              | Page                                           |
+| --------------------------------- | ---------------------------------------------- |
+| Wallet, faucet, first transfer    | [Get started with Eld](./quickstart)           |
+| Protocol overview                 | [Litepaper](./litepaper)                       |
+| CLI commands                      | [Eld CLI reference](./eld-cli)                 |
+| Common questions                  | [FAQ](./faq)                                   |
 
-Most online systems assume **keep everything forever**. Cloud storage bills grow. Blockchains swell until only data centers can run them. Meanwhile, much of what we create — live events, ephemeral chat, sensor bursts, agent scratch space — only matters for minutes or hours.
+## Core topics
 
-Eld flips the default: **you decide how long your data stays available**, and the network enforces that expiry for everyone equally.
+- [Accounts and Ed25519 addresses](./accounts-overview)
+- [Transactions](./transactions-overview)
+- [Consensus](./consensus)
+- [Custom namespaces](./namespaces)
+- [Content addresses (CADO)](./content-addresses)
 
-## How it works
+## Capacity providers
 
-1. **Publish** — You post a message or file. The network records _what_ you shared (a secure fingerprint of the content) and _when it expires_. The actual bytes live with storage contributors, not bloating the core ledger.
+- [Run an Eld capacity provider](./capacity-provider)
+- [Capacity provider P2P protocol](./capacity-provider-p2p-protocol)
 
-2. **Use while live** — While the clock is running, anyone with permission can fetch and verify the content. Posts can be public or encrypted.
+## Also
 
-3. **Expire automatically** — When time is up, the content stops being served and storage is reclaimed. You paid for the lifetime you needed, not centuries of hosting.
-
-4. **Continuous verification of live content** — Independent operators run the network. They agree on ordering and rules; they cannot silently rewrite what was published. Storage contributors prove they are holding data when challenged and earn rewards for reliable service.
-
-The network targets roughly **one round of updates (a block) per second** — fast enough for real-time apps, games, and live coordination.
-
-## How Eld is different
-
-|                    | Typical blockchain | Centralized app             | **Eld**                       |
-| ------------------ | ------------------ | --------------------------- | ----------------------------- |
-| **Retention**      | Forever            | Platform decides            | **You set the lifetime**      |
-| **Control**        | Decentralized      | One company                 | **Decentralized**             |
-| **Cost model**     | Grows with history | Subscription / storage fees | **Pay for the time you need** |
-| **Who can run it** | Often data centers | Provider only               | **Laptops, phones, home NAS** |
-
-## Key use cases
-
-- **Temporary caching & sharing** — live events, real-time collaboration, flash sales; data expires after hours or days.
-- **Ephemeral messaging** — chat, attachments, and social feeds that auto-purge for privacy and lean storage.
-- **Quick prototyping & one-off work** — draft sharing, AI inference results, session logs, debug traces.
-- **IoT & edge bursts** — sensor spikes and edge analytics where only recent readings matter.
-- **Short-lived coordination** — disposable credentials, temporary proofs, event tickets, flash-loan metadata, live bidding state.
-- **Agent scratch space** — content-addressed working memory for AI: intermediate results, tool outputs, thoughts that die with the task.
-
-Looking ahead, Eld aims to extend this foundation to support compute and autonomous agents running on any device, or provide lightweight, ephemeral AI agent storage — enabling mobile-first, decentralized intelligence without relying on always-on servers or eternal blockchains.
-
-## Get Started with Eld
-
-- [Create an account](./accounts-overview)
-- [Send your first transaction](./transactions-overview)
-
-## Custom namespaces and content
-
-- [Custom namespaces](./namespaces) — register `@yourname` and upload under `/@yourname/...`
-- [Content Derived Addresses](./content-addresses) — CADO paths, pinboard, and namespace content paths
-
-## Join Eld as a capacity provider
-
-- [What is a Capacity Provider](./capacity-provider)
-- [The Capacity Provider P2P protocol](./capacity-provider-p2p-protocol)
+- [Roadmap](./roadmap) · [Website](https://www.eld.network) · [Explorer](https://explorer.eld.network)

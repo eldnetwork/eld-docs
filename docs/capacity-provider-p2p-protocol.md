@@ -1,6 +1,6 @@
 ---
-title: P2P protocol for capacity providers
-description: libp2p messaging between Eld nodes and capacity providers — content sync, challenges, and GossipSub topics.
+title: Eld capacity provider P2P protocol
+description: libp2p messaging for Eld capacity providers — content sync, challenges, and GossipSub topics.
 ---
 
 # P2P protocol for capacity providers
