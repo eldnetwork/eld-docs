@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from '@docusaurus/Link'
 import { useColorMode } from '@docusaurus/theme-common'
 import SearchBar from '@theme/SearchBar'

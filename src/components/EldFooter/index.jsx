@@ -1,4 +1,3 @@
-import React from 'react'
 import Link from '@docusaurus/Link'
 
 const footerColumns = [
@@ -12,7 +11,7 @@ const footerColumns = [
   {
     heading: 'Protocol',
     items: [
-      { label: 'Intro', href: 'https://eld.network' },
+      { label: 'Intro', href: 'https://www.eld.network' },
       { label: 'Litepaper', to: '/litepaper' },
     ],
   },

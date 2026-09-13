@@ -1,0 +1,20 @@
+# Lychee link checker — https://lychee.cli.rs/
+verbose = "warn"
+no_progress = true
+max_concurrency = 8
+timeout = 20
+accept = ["200", "206", "301", "302", "307", "308", "429"]
+
+# Resolve /img/... (and other absolute site paths) against static/
+root_dir = "static"
+
+scheme = ["https", "http"]
+
+exclude_path = ["node_modules", "build", ".docusaurus", "package-lock.json"]
+
+# Example / placeholder hosts used in docs prose
+exclude = [
+  '^http://<host>',
+  '^https://localhost',
+  '^http://localhost',
+]

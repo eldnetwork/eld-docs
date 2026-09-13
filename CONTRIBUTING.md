@@ -21,7 +21,7 @@ npm start
 npm run ci
 ```
 
-That runs Prettier (including Markdown) and a production build. Prefer editing docs as clear Markdown; avoid raw HTML unless needed for media or layout.
+That runs Prettier, ESLint, markdownlint, unit tests, npm audit, and a production build. Prefer editing docs as clear Markdown; avoid raw HTML unless needed for media or layout.
 
 ## Docs content guidelines
 

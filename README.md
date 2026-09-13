@@ -44,7 +44,7 @@ npm run serve
 npm run ci
 ```
 
-Runs Prettier (including Markdown), `npm audit` on production deps (fails on critical+; Docusaurus still reports known unfixed highs), and a production build.
+Runs Prettier, ESLint, markdownlint, Vitest (Navbar/Footer), `npm audit` on production deps (fails on critical+; Docusaurus still reports known unfixed highs), and a production build. CI also runs [lychee](https://lychee.cli.rs/) against Markdown external links (`npm run links` locally if lychee is installed).
 
 ## Links
 

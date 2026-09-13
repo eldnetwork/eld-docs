@@ -20,3 +20,16 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run ci
+      - name: Check external links
+        uses: lycheeverse/lychee-action@v2.3.0
+        with:
+          fail: true
+          lycheeVersion: v0.24.2
+          args: >-
+            --config .lychee.toml
+            README.md
+            CONTRIBUTING.md
+            SECURITY.md
+            docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
