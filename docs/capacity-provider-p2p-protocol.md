@@ -11,28 +11,28 @@ This page describes how Eld nodes and capacity providers communicate over **libp
 
 Application messages are a single enum, **SyncMsg**, serialized with **bincode** and published on named GossipSub topics. Two areas matter for capacity providers:
 
-1. **Content sync** — discover and fetch blobs so providers can fill open slots  
-2. **Capacity challenges** — the epoch’s capacity validator asks providers to prove they still hold committed chunks  
+1. **Content sync** — discover and fetch blobs so providers can fill open slots
+2. **Capacity challenges** — the epoch’s capacity validator asks providers to prove they still hold committed chunks
 
 Heartbeats and inventory messages help peers stay aware of each other; they are optional for understanding the core flows.
 
 ## Network
 
-| Setting | Typical value | Notes |
-|--------|----------------|-------|
-| Node TCP / QUIC | 4001 / 4002 | Configurable on the Eld node |
-| CLI daemon | 4011 / 4012 | Defaults avoid clashing with a local node |
+| Setting         | Typical value | Notes                                     |
+| --------------- | ------------- | ----------------------------------------- |
+| Node TCP / QUIC | 4001 / 4002   | Configurable on the Eld node              |
+| CLI daemon      | 4011 / 4012   | Defaults avoid clashing with a local node |
 
 Peers discover each other on the LAN via **mDNS** and exchange signed GossipSub messages.
 
 ## Topics
 
-| Topic | Who uses it | Purpose |
-|-------|-------------|---------|
-| `eld-content-sync` | Nodes and providers | Announce, request, and respond with content; heartbeats and inventory |
-| `eld-content-sync-response` | Providers (responses) | Some deployments route large responses here |
-| `eld-storage-challenge-topic-{provider_id}` | Validator → provider | Capacity challenge for that provider’s address |
-| `eld-storage-proof-topic-{provider_id}` | Provider → validator | Challenge response with chunk proofs |
+| Topic                                       | Who uses it           | Purpose                                                               |
+| ------------------------------------------- | --------------------- | --------------------------------------------------------------------- |
+| `eld-content-sync`                          | Nodes and providers   | Announce, request, and respond with content; heartbeats and inventory |
+| `eld-content-sync-response`                 | Providers (responses) | Some deployments route large responses here                           |
+| `eld-storage-challenge-topic-{provider_id}` | Validator → provider  | Capacity challenge for that provider’s address                        |
+| `eld-storage-proof-topic-{provider_id}`     | Provider → validator  | Challenge response with chunk proofs                                  |
 
 `provider_id` is the provider’s on-chain address (e.g. `0x…` hex). Each provider subscribes only to **its own** challenge topic; validators subscribe to the **proof** topic before sending a challenge.
 
@@ -42,29 +42,29 @@ All variants are defined in `eld_common::sync_msg` and share the same serializat
 
 ### Content sync
 
-| Message | Role |
-|---------|------|
-| **Announce** | “I have this content id (blob key).” |
-| **ContentRequest** | “Please send this content id.” |
-| **ContentResponse** | Payload for that id (body is Base64-encoded in the wire format). |
-| **ContentSyncHeartbeat** / **ContentSyncHeartbeatResponse** | Liveness between sync participants |
-| **ContentInventoryRequest** / **ContentInventoryResponse** | Optional inventory exchange (JSON list) |
+| Message                                                     | Role                                                             |
+| ----------------------------------------------------------- | ---------------------------------------------------------------- |
+| **Announce**                                                | “I have this content id (blob key).”                             |
+| **ContentRequest**                                          | “Please send this content id.”                                   |
+| **ContentResponse**                                         | Payload for that id (body is Base64-encoded in the wire format). |
+| **ContentSyncHeartbeat** / **ContentSyncHeartbeatResponse** | Liveness between sync participants                               |
+| **ContentInventoryRequest** / **ContentInventoryResponse**  | Optional inventory exchange (JSON list)                          |
 
 Published on `eld-content-sync` (and responses may use `eld-content-sync-response` depending on configuration).
 
 ### Capacity challenge and response
 
-| Message | Direction | Role |
-|---------|-----------|------|
-| **CapacityChallenge** | Validator → provider | Lists chunk indices to prove, plus on-chain `merkle_root`, `seed`, `expiration_block`, and metadata |
-| **CapacityChallengeResponse** | Provider → validator | One **ChunkProof** per requested index: chunk bytes, chunk hash, Merkle path, slot state |
+| Message                       | Direction            | Role                                                                                                |
+| ----------------------------- | -------------------- | --------------------------------------------------------------------------------------------------- |
+| **CapacityChallenge**         | Validator → provider | Lists chunk indices to prove, plus on-chain `merkle_root`, `seed`, `expiration_block`, and metadata |
+| **CapacityChallengeResponse** | Provider → validator | One **ChunkProof** per requested index: chunk bytes, chunk hash, Merkle path, slot state            |
 
 **ChunkProof** includes the slot state (Proof, Open, or Content with deal id and hash) so validators can tell proof slots from user content.
 
 ### Other
 
-| Message | Role |
-|---------|------|
+| Message       | Role                 |
+| ------------- | -------------------- |
 | **Heartbeat** | General P2P liveness |
 
 ## Capacity challenge flow
@@ -116,11 +116,11 @@ Providers also **announce** content they hold so the network can replicate ephem
 
 **Capacity validator (node)**
 
-- Subscribe to proof topic for each provider before challenging  
-- Publish `CapacityChallenge` on that provider’s challenge topic  
-- Verify responses; may broadcast **VerifiedProof** transactions  
+- Subscribe to proof topic for each provider before challenging
+- Publish `CapacityChallenge` on that provider’s challenge topic
+- Verify responses; may broadcast **VerifiedProof** transactions
 
 ## Related documentation
 
-- [Capacity Provider](./capacity-provider) — slots, Merkle roots, RegisterCapacity / UpdateCapacityMerkleRoot  
+- [Capacity Provider](./capacity-provider) — slots, Merkle roots, RegisterCapacity / UpdateCapacityMerkleRoot
 - [Consensus](./consensus) — epoch validator and capacity validator selection

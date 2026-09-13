@@ -4,7 +4,7 @@
 // There are various equivalent ways to declare your Docusaurus config.
 // See: https://docusaurus.io/docs/api/docusaurus-config
 
-import {themes as prismThemes} from 'prism-react-renderer';
+import { themes as prismThemes } from 'prism-react-renderer'
 
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
@@ -59,7 +59,7 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'GunnarKarlsson', // Usually your GitHub org/user name.
+  organizationName: 'eldnetwork', // Usually your GitHub org/user name.
   projectName: 'eld-docs', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -80,6 +80,7 @@ const config = {
         docs: {
           routeBasePath: '/',
           sidebarPath: './sidebars.js',
+          editUrl: 'https://github.com/eldnetwork/eld-docs/tree/main/',
         },
         blog: false,
         theme: {
@@ -92,7 +93,11 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/eld-logo-150.png',
+      image: 'img/og-1200x630.png',
+      // Official ColorModeToggle is disabled on purpose: the swizzled Navbar
+      // (`src/theme/Navbar`) is the only theme control (custom ThemeIcons +
+      // localStorage key `eld-home-theme`). Do not set disableSwitch: false
+      // unless that custom toggle is removed.
       colorMode: {
         defaultMode: 'dark',
         disableSwitch: true,
@@ -106,6 +111,6 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
-};
+}
 
-export default config;
+export default config

@@ -10,6 +10,7 @@ This document explains how accounts work in the Eld network, including address c
 ## Overview
 
 An **account** in Eld represents a user's identity on the network. Each account has:
+
 - **Address**: A unique 20-byte identifier derived from a public key
 - **Balance**: The account's token balance
 - **Nonce**: A counter that tracks the number of transactions sent from this account
@@ -36,6 +37,7 @@ address = hash[0..20]                                 // 20 bytes
 ### Address Format
 
 Addresses in Eld are represented as:
+
 - **Hex-encoded**: 40 hexadecimal characters (20 bytes × 2)
 - **With 0x prefix**: `0x` followed by 40 hex characters
 - **Example**: `0xe17404c417fa10cc04fdf73604fcacca8d0a687c`
@@ -59,6 +61,7 @@ cargo run -- create-wallet <wallet_name>
 ```
 
 **Example:**
+
 ```bash
 cargo run -- create-wallet mywallet
 ```
@@ -75,6 +78,7 @@ cargo run -- create-wallet mywallet
 - **Account**: The on-chain representation of your address, including balance and nonce. Created automatically when you first interact with the network.
 
 **Important**: Creating a wallet does not automatically create an on-chain account. An account is created on-chain when:
+
 - You receive tokens (e.g., from a faucet or transfer)
 - You send your first transaction
 - You are registered as a validator
@@ -100,6 +104,7 @@ cargo run -- get-account <address>
 ```
 
 **Example:**
+
 ```bash
 cargo run -- get-account 0xe17404c417fa10cc04fdf73604fcacca8d0a687c
 ```
@@ -123,6 +128,7 @@ The account's token balance, represented as a `Coin` type. Balances are stored a
 ### Nonce
 
 The nonce is a counter that tracks the number of transactions sent from this account. Each transaction must have a nonce that is:
+
 - **Sequential**: Each new transaction must have a nonce one greater than the previous transaction
 - **Unique**: Prevents transaction replay attacks
 - **Required**: All transactions must include a valid nonce
@@ -179,6 +185,7 @@ pub struct Address {
 ### Address Validation
 
 Addresses are validated to ensure:
+
 - Correct length (20 bytes)
 - Valid hexadecimal encoding
 - Proper format (with or without 0x prefix)

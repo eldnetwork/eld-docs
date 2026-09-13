@@ -17,7 +17,7 @@
 const sidebars = {
   // By default, Docusaurus generates a sidebar from the docs folder
   docs: [
-    'intro',  // This makes the intro page appear first (shorthand for {type: 'doc', id: 'intro'})
+    'intro', // This makes the intro page appear first (shorthand for {type: 'doc', id: 'intro'})
     'litepaper',
     'roadmap',
 
@@ -26,9 +26,7 @@ const sidebars = {
       label: 'Eld consensus protocol',
       collapsible: true,
       collapsed: false,
-      items: [
-        { type: 'doc', id: 'consensus', label: 'Consensus' },
-      ],
+      items: [{ type: 'doc', id: 'consensus', label: 'Consensus' }],
       link: {
         type: 'doc',
         id: 'consensus',
@@ -37,17 +35,17 @@ const sidebars = {
 
     {
       type: 'category',
-      label: 'Accounts',  // Section name in sidebar
-      collapsible: true,  // Allow collapsing (optional, default true)
-      collapsed: false,   // Start expanded (optional)
+      label: 'Accounts', // Section name in sidebar
+      collapsible: true, // Allow collapsing (optional, default true)
+      collapsed: false, // Start expanded (optional)
       items: [
-        'accounts-overview',  // Add your placeholder or other account-related docs here
+        'accounts-overview', // Add your placeholder or other account-related docs here
         // Add more later, e.g.: 'accounts/create', 'accounts/manage'
       ],
       // Optional: Add a landing page for the section
       link: {
         type: 'doc',
-        id: 'accounts-overview',  // Makes "Accounts" clickable, linking to the overview page
+        id: 'accounts-overview', // Makes "Accounts" clickable, linking to the overview page
       },
     },
 
@@ -86,9 +84,7 @@ const sidebars = {
       label: 'Custom namespaces',
       collapsible: true,
       collapsed: false,
-      items: [
-        'namespaces',
-      ],
+      items: ['namespaces'],
       link: {
         type: 'doc',
         id: 'namespaces',
@@ -100,9 +96,7 @@ const sidebars = {
       label: 'Content addresses',
       collapsible: true,
       collapsed: false,
-      items: [
-        'content-addresses',
-      ],
+      items: ['content-addresses'],
       link: {
         type: 'doc',
         id: 'content-addresses',
@@ -114,15 +108,13 @@ const sidebars = {
       label: 'CLI',
       collapsible: true,
       collapsed: false,
-      items: [
-        'eld-cli',
-      ],
+      items: ['eld-cli'],
       link: {
         type: 'doc',
         id: 'eld-cli',
       },
     },
   ],
-};
+}
 
-export default sidebars;
+export default sidebars

@@ -23,19 +23,19 @@ Transactions are submitted to an Eld node (HTTP/RPC); the node broadcasts them t
 
 ## Transaction types
 
-| Type | Who sends it | Purpose |
-|------|----------------|---------|
-| **Transfer** | Any account | Send native tokens to another address |
-| **Stake** | Account holder | Lock tokens toward validator candidacy (optional validator public key) |
-| **Unstake** | Staker | Release staked tokens back to the sender |
-| **RegisterCapacity** | Capacity provider | Register disk capacity with Merkle root, seed, and chunk count |
-| **UnregisterCapacity** | Capacity provider | Remove capacity registration from the chain |
-| **UpdateCapacityMerkleRoot** | Capacity provider | Publish a new Merkle root after storing or removing content |
-| **VerifiedProof** | Capacity validator | Record that a provider passed a capacity challenge for an epoch |
-| **PostMessage** | Validator (on behalf of user) | Commit a pinboard post after the user signed the message |
-| **AddNamespace** | Any account | Register a custom namespace slug (maps to scope `@slug`) |
-| **AddContract** | Deployer | Upload and instantiate a CosmWasm WASM contract |
-| **ExecuteContractCall** | Any account | Call an execute method on a deployed contract |
+| Type                         | Who sends it                  | Purpose                                                                |
+| ---------------------------- | ----------------------------- | ---------------------------------------------------------------------- |
+| **Transfer**                 | Any account                   | Send native tokens to another address                                  |
+| **Stake**                    | Account holder                | Lock tokens toward validator candidacy (optional validator public key) |
+| **Unstake**                  | Staker                        | Release staked tokens back to the sender                               |
+| **RegisterCapacity**         | Capacity provider             | Register disk capacity with Merkle root, seed, and chunk count         |
+| **UnregisterCapacity**       | Capacity provider             | Remove capacity registration from the chain                            |
+| **UpdateCapacityMerkleRoot** | Capacity provider             | Publish a new Merkle root after storing or removing content            |
+| **VerifiedProof**            | Capacity validator            | Record that a provider passed a capacity challenge for an epoch        |
+| **PostMessage**              | Validator (on behalf of user) | Commit a pinboard post after the user signed the message               |
+| **AddNamespace**             | Any account                   | Register a custom namespace slug (maps to scope `@slug`)               |
+| **AddContract**              | Deployer                      | Upload and instantiate a CosmWasm WASM contract                        |
+| **ExecuteContractCall**      | Any account                   | Call an execute method on a deployed contract                          |
 
 Below is a high-level description of each. Amount fields use the chain’s native token representation (fixed-point integer units).
 
@@ -111,30 +111,30 @@ CosmWasm contracts are deployed with **AddContract** (WASM bytecode + instantiat
 
 ## Fees and lifecycle
 
-1. **Build** — CLI or app constructs payload and loads the correct nonce from chain state  
-2. **Sign** — Sender signs with their wallet key  
-3. **Submit** — Transaction is sent to a node  
-4. **CheckTx / DeliverTx** — Validators verify signature, nonce, balance, and type-specific rules  
-5. **Commit** — State updates and events are persisted in the block  
+1. **Build** — CLI or app constructs payload and loads the correct nonce from chain state
+2. **Sign** — Sender signs with their wallet key
+3. **Submit** — Transaction is sent to a node
+4. **CheckTx / DeliverTx** — Validators verify signature, nonce, balance, and type-specific rules
+5. **Commit** — State updates and events are persisted in the block
 
 Fees are deducted from the sender on success. The CLI calculates fees when building transactions.
 
 ## Common failures
 
-- Insufficient balance for transfer amount or fee  
-- Nonce not sequential  
-- Invalid or unregistered addresses  
-- Stake below minimum or unstake above staked balance  
-- Capacity registration with zero bytes or mismatched Merkle root at challenge time  
-- Pinboard validation errors (content type, tags, signature, TTL)  
-- Namespace upload without registration, wrong owner, or invalid slug  
-- `AddNamespace` on an already taken or reserved slug  
+- Insufficient balance for transfer amount or fee
+- Nonce not sequential
+- Invalid or unregistered addresses
+- Stake below minimum or unstake above staked balance
+- Capacity registration with zero bytes or mismatched Merkle root at challenge time
+- Pinboard validation errors (content type, tags, signature, TTL)
+- Namespace upload without registration, wrong owner, or invalid slug
+- `AddNamespace` on an already taken or reserved slug
 
 ## Related documentation
 
 - [Accounts](./accounts-overview)
-- [Consensus](./consensus) — epochs and validator roles  
-- [Capacity Provider](./capacity-provider)  
-- [Custom namespaces](./namespaces)  
-- [Content addresses](./content-addresses)  
+- [Consensus](./consensus) — epochs and validator roles
+- [Capacity Provider](./capacity-provider)
+- [Custom namespaces](./namespaces)
+- [Content addresses](./content-addresses)
 - [Eld CLI](./eld-cli)

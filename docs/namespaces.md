@@ -11,12 +11,12 @@ This page covers registration, uploads, paths, and read APIs. For CADO path conv
 
 ## Overview
 
-| Concept | Example | Meaning |
-|---------|---------|---------|
-| `namespace_slug` | `alice` | Canonical registry key (lowercase, validated) |
-| `scope` | `@alice` | User-facing scope (`@` + slug) |
-| Registry CADO | `/@eld/namespace/alice` | Immutable on-chain registration record |
-| Content path | `/@alice/msg-abc123` | Pinboard post metadata/blob keyed by namespace + `message_id` |
+| Concept          | Example                 | Meaning                                                       |
+| ---------------- | ----------------------- | ------------------------------------------------------------- |
+| `namespace_slug` | `alice`                 | Canonical registry key (lowercase, validated)                 |
+| `scope`          | `@alice`                | User-facing scope (`@` + slug)                                |
+| Registry CADO    | `/@eld/namespace/alice` | Immutable on-chain registration record                        |
+| Content path     | `/@alice/msg-abc123`    | Pinboard post metadata/blob keyed by namespace + `message_id` |
 
 Flow in short:
 
@@ -92,11 +92,11 @@ Base URL: `http://<host>:<app_port>` (often port **9001** locally).
 
 `GET /v1/namespaces`
 
-| Query param | Default | Max | Notes |
-|-------------|---------|-----|-------|
-| `limit` | `50` | `100` | Page size |
-| `after_registered_height` | — | — | Continuation (pair with `after_namespace_slug`) |
-| `after_namespace_slug` | — | — | Continuation |
+| Query param               | Default | Max   | Notes                                           |
+| ------------------------- | ------- | ----- | ----------------------------------------------- |
+| `limit`                   | `50`    | `100` | Page size                                       |
+| `after_registered_height` | —       | —     | Continuation (pair with `after_namespace_slug`) |
+| `after_namespace_slug`    | —       | —     | Continuation                                    |
 
 Sort: **`registered_height` descending**, then `namespace_slug` ascending.
 

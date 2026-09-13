@@ -30,11 +30,11 @@ A **capacity provider** is a storage provider in the Eld network. It pre-allocat
 
 The capacity file is divided into fixed-size **chunks** (slots). Each slot has a **state**:
 
-| Slot type   | Approx. share | Purpose |
-|------------|----------------|---------|
-| **Proof**  | 80%            | Deterministic data from `provider_id`, `seed`, and chunk index. Used for capacity verification challenges. |
-| **Open**   | 20%            | Zeros; available for user content. Can become Content slots when content is stored. |
-| **Content**| (from Open)    | User content; tracked with `deal_id` (content_id) and `committed_hash`. |
+| Slot type   | Approx. share | Purpose                                                                                                    |
+| ----------- | ------------- | ---------------------------------------------------------------------------------------------------------- |
+| **Proof**   | 80%           | Deterministic data from `provider_id`, `seed`, and chunk index. Used for capacity verification challenges. |
+| **Open**    | 20%           | Zeros; available for user content. Can become Content slots when content is stored.                        |
+| **Content** | (from Open)   | User content; tracked with `deal_id` (content_id) and `committed_hash`.                                    |
 
 - **Chunk size**: 1 KB (`MAX_CHUNK_SIZE = 1024`).
 - **Layout**: Slot offsets are determined by a deterministic permutation (e.g. Fisher–Yates) from a seed so the same provider/seed always produces the same layout.
@@ -76,9 +76,9 @@ Capacity providers and Eld nodes share a **libp2p** GossipSub network. Applicati
 
 Peers advertise and fetch blobs by **content id**:
 
-1. **Announce** — a peer has a blob  
-2. **ContentRequest** — another peer wants it  
-3. **ContentResponse** — blob bytes (Base64-encoded on the wire)  
+1. **Announce** — a peer has a blob
+2. **ContentRequest** — another peer wants it
+3. **ContentResponse** — blob bytes (Base64-encoded on the wire)
 
 When a provider ingests content, it writes **open/content** slots, rebuilds the Merkle tree, and sends **UpdateCapacityMerkleRoot**.
 
@@ -86,10 +86,10 @@ When a provider ingests content, it writes **open/content** slots, rebuilds the 
 
 Each epoch, one **capacity validator** challenges registered providers:
 
-| Step | Topic | Message |
-|------|--------|---------|
+| Step                 | Topic                                       | Message                                                                                               |
+| -------------------- | ------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
 | Validator → provider | `eld-storage-challenge-topic-{provider_id}` | **CapacityChallenge** — which chunk indices to prove, plus on-chain `merkle_root`, `seed`, and expiry |
-| Provider → validator | `eld-storage-proof-topic-{provider_id}` | **CapacityChallengeResponse** — chunk data, hashes, Merkle paths, and slot state per index |
+| Provider → validator | `eld-storage-proof-topic-{provider_id}`     | **CapacityChallengeResponse** — chunk data, hashes, Merkle paths, and slot state per index            |
 
 The validator subscribes to the proof topic **before** publishing the challenge. The provider ignores challenges not addressed to its own `provider_id` and checks that the Merkle root still matches chain state.
 

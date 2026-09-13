@@ -144,8 +144,8 @@ html {
 }
 
 [data-theme='dark'] {
-  --ifm-menu-link-sublist-icon-filter: invert(100%) sepia(94%) saturate(17%)
-    hue-rotate(223deg) brightness(104%) contrast(98%);
+  --ifm-menu-link-sublist-icon-filter: invert(100%) sepia(94%) saturate(17%) hue-rotate(223deg)
+    brightness(104%) contrast(98%);
   --lh-bg: #080808;
   --lh-panel: rgba(12, 12, 12, 0.94);
   --lh-border: rgba(255, 255, 255, 0.08);

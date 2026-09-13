@@ -12,6 +12,7 @@ This page outlines the major milestones planned for Eld. Timelines are direction
 ### 2026
 
 #### Testnet Launch
+
 - Testnet launch of eld node cluster
 
 ## Plan
@@ -19,6 +20,7 @@ This page outlines the major milestones planned for Eld. Timelines are direction
 ### 2026
 
 #### Testnet
+
 - Extend tester whitelist
 - Patches for performance and vulnerabilities
 - Improved resume and sync logic
@@ -41,5 +43,6 @@ This page outlines the major milestones planned for Eld. Timelines are direction
 #### Mainnet Launch
 
 #### Features & integrations
+
 - **Mobile wallet** launch
 - **Mobile capacity provider** launch

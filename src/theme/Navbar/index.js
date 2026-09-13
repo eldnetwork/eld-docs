@@ -1,23 +1,27 @@
-import React from 'react';
-import Link from '@docusaurus/Link';
-import {useColorMode} from '@docusaurus/theme-common';
-import {MoonIcon, SunIcon} from '@site/src/components/ThemeIcons';
+import React from 'react'
+import Link from '@docusaurus/Link'
+import { useColorMode } from '@docusaurus/theme-common'
+import { MoonIcon, SunIcon } from '@site/src/components/ThemeIcons'
 
 function persistTheme(isLight) {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('eld-home-theme', isLight ? 'light' : 'dark');
+    window.localStorage.setItem('eld-home-theme', isLight ? 'light' : 'dark')
   }
 }
 
+/**
+ * Custom shell navbar — sole color-mode control for this site.
+ * themeConfig.colorMode.disableSwitch stays true so Infima's switch is not shown.
+ */
 export default function Navbar() {
-  const {colorMode, setColorMode} = useColorMode();
-  const isLight = colorMode === 'light';
+  const { colorMode, setColorMode } = useColorMode()
+  const isLight = colorMode === 'light'
 
   const handleThemeToggle = () => {
-    const nextIsLight = !isLight;
-    persistTheme(nextIsLight);
-    setColorMode(nextIsLight ? 'light' : 'dark');
-  };
+    const nextIsLight = !isLight
+    persistTheme(nextIsLight)
+    setColorMode(nextIsLight ? 'light' : 'dark')
+  }
 
   return (
     <header className="navbar explorer-home-shell__header">
@@ -36,17 +40,19 @@ export default function Navbar() {
           className="explorer-home-shell__theme-toggle"
           onClick={handleThemeToggle}
           aria-label={isLight ? 'Switch to dark mode' : 'Switch to light mode'}
-          title={isLight ? 'Switch to dark mode' : 'Switch to light mode'}>
+          title={isLight ? 'Switch to dark mode' : 'Switch to light mode'}
+        >
           {isLight ? <MoonIcon /> : <SunIcon />}
         </button>
         <a
           href="https://explorer.eld.network"
           className="explorer-home-shell__intro-link"
           target="_blank"
-          rel="noreferrer noopener">
+          rel="noreferrer noopener"
+        >
           ELD BLOCKCHAIN EXPLORER -&gt;
         </a>
       </div>
     </header>
-  );
+  )
 }

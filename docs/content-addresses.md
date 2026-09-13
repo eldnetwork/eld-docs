@@ -11,14 +11,14 @@ This document describes how Eld is **content-addressable** and how **CADO** (Con
 
 Eld identifies data by **hashes and typed paths** instead of arbitrary server locations. That gives:
 
-- **Integrity** — the same identifier always refers to the same bytes  
-- **Deduplication** — identical content shares one ID  
-- **Portable lookups** — any node can resolve a path or content ID the same way  
+- **Integrity** — the same identifier always refers to the same bytes
+- **Deduplication** — identical content shares one ID
+- **Portable lookups** — any node can resolve a path or content ID the same way
 
 Two layers are worth separating:
 
-1. **CADO** — typed objects in node storage (accounts, epoch records, contract state, and similar), looked up by a **CADO path**  
-2. **Blob content** — raw bytes split into chunks; identified by **content_id** (and used on the P2P content-sync topics)  
+1. **CADO** — typed objects in node storage (accounts, epoch records, contract state, and similar), looked up by a **CADO path**
+2. **Blob content** — raw bytes split into chunks; identified by **content_id** (and used on the P2P content-sync topics)
 
 ---
 
@@ -26,10 +26,10 @@ Two layers are worth separating:
 
 A **CADO** is a typed blob with metadata (`type`, owner, hash). It can be immutable or mutable:
 
-| Variant | Meaning |
-|---------|---------|
-| **Immutable** | One version; the name is usually `0x` plus the hash of the data |
-| **Mutable** | Stable path (e.g. an account address) while the payload can change; storage tracks original and latest hashes |
+| Variant       | Meaning                                                                                                       |
+| ------------- | ------------------------------------------------------------------------------------------------------------- |
+| **Immutable** | One version; the name is usually `0x` plus the hash of the data                                               |
+| **Mutable**   | Stable path (e.g. an account address) while the payload can change; storage tracks original and latest hashes |
 
 Internally, keys are derived from scope, type, and hash. What you use in APIs and the CLI is the **path string** below.
 
@@ -43,11 +43,11 @@ Paths under the Eld root scope follow:
 /@eld/<type>/<name>
 ```
 
-- **scope** is `@eld` (full prefix `/@eld/`)  
-- **type** is a known segment such as `account` or `epoch_record`  
+- **scope** is `@eld` (full prefix `/@eld/`)
+- **type** is a known segment such as `account` or `epoch_record`
 - **name** is always a `0x` prefix plus hex:
-  - **40 hex characters** (20 bytes) for account-like types — same shape as a wallet address  
-  - **64 hex characters** (32 bytes) for hash-like types — contract IDs, epoch keys, snapshot IDs, etc.  
+  - **40 hex characters** (20 bytes) for account-like types — same shape as a wallet address
+  - **64 hex characters** (32 bytes) for hash-like types — contract IDs, epoch keys, snapshot IDs, etc.
 
 ### Examples you can copy
 
@@ -92,12 +92,12 @@ eld-cli list-cados '/@eld/account/'
 
 These `type` segments match the allow-list in `eld_common` (3-part paths only):
 
-| Category | `type` values |
-|----------|----------------|
-| Accounts | `account`, `staking_account`, `storage_staking_account` |
-| Contracts | `contract_info`, `contract_state`, `cado_map` |
-| Chain / snapshots | `state_version`, `epoch_record`, `trie_snapshot`, `snapshot_metadata`, `snapshot_chunk`, `chunk_reference` |
-| Namespace registry | `namespace` | Slug segment (not `0x` hex) — see below |
+| Category           | `type` values                                                                                              |
+| ------------------ | ---------------------------------------------------------------------------------------------------------- |
+| Accounts           | `account`, `staking_account`, `storage_staking_account`                                                    |
+| Contracts          | `contract_info`, `contract_state`, `cado_map`                                                              |
+| Chain / snapshots  | `state_version`, `epoch_record`, `trie_snapshot`, `snapshot_metadata`, `snapshot_chunk`, `chunk_reference` |
+| Namespace registry | `namespace`                                                                                                | Slug segment (not `0x` hex) — see below |
 
 Related path prefixes also exist for **content manifests** (`/@eld/content_manifest/...`) and **account content** indexes; manifests use the same 64-hex `name` pattern.
 
@@ -186,9 +186,9 @@ Upload flow: user-signed submit → `PostMessage` tx → blob in capacity slots;
 
 Separate from CADO paths, **raw content** is chunked and hashed:
 
-1. Each chunk is stored under **chunk_id** = `0x` + SHA-256(chunk bytes)  
-2. A **ChunkSummary** lists all chunks  
-3. **content_id** = `0x` + SHA-256(serialized ChunkSummary)  
+1. Each chunk is stored under **chunk_id** = `0x` + SHA-256(chunk bytes)
+2. A **ChunkSummary** lists all chunks
+3. **content_id** = `0x` + SHA-256(serialized ChunkSummary)
 
 The same file always produces the same **content_id**. Peers announce and fetch blobs by this id on the `eld-content-sync` P2P topic (see [P2P protocol](./capacity-provider-p2p-protocol)).
 
@@ -209,14 +209,14 @@ content_id  → 0x<64-hex-chars>   (used for sync and storage slots)
 
 ## Quick reference
 
-| What you have | Example | How to fetch |
-|---------------|---------|--------------|
-| Account | `/@eld/account/0xe17404c417fa10cc04fdf73604fcacca8d0a687c` | `eld-cli get-cado` or `GET /cado/{path}` on the node |
-| Manifest CADO | `/@eld/content_manifest/0x23c07678...f871a` | Same CADO APIs |
-| Pinboard post | `/@eld/pinboard/post/0x.../0x...` | `GET /v1/pinboard/post?path=...` or `eld-cli pinboard-get-post` |
-| Namespace registry | `/@eld/namespace/peter` | `GET /v1/namespace/peter` |
-| Namespace pinboard post | `/@peter/{message_id}` | `GET /v1/pinboard/post?path=/@peter/...` |
-| Raw blob | `0x6ddb7450...915fa91` | P2P content sync; capacity providers hold bytes in slots |
+| What you have           | Example                                                    | How to fetch                                                    |
+| ----------------------- | ---------------------------------------------------------- | --------------------------------------------------------------- |
+| Account                 | `/@eld/account/0xe17404c417fa10cc04fdf73604fcacca8d0a687c` | `eld-cli get-cado` or `GET /cado/{path}` on the node            |
+| Manifest CADO           | `/@eld/content_manifest/0x23c07678...f871a`                | Same CADO APIs                                                  |
+| Pinboard post           | `/@eld/pinboard/post/0x.../0x...`                          | `GET /v1/pinboard/post?path=...` or `eld-cli pinboard-get-post` |
+| Namespace registry      | `/@eld/namespace/peter`                                    | `GET /v1/namespace/peter`                                       |
+| Namespace pinboard post | `/@peter/{message_id}`                                     | `GET /v1/pinboard/post?path=/@peter/...`                        |
+| Raw blob                | `0x6ddb7450...915fa91`                                     | P2P content sync; capacity providers hold bytes in slots        |
 
 ---
 
@@ -224,15 +224,15 @@ content_id  → 0x<64-hex-chars>   (used for sync and storage slots)
 
 Paths must be valid **CadoPath** strings where applicable (correct type, `0x`, and hex length).
 
-| Endpoint | Purpose |
-|----------|---------|
-| `GET /health` | Health check |
-| `GET /cado/{cado_path}` | Fetch CADO at path — e.g. `/cado/@eld/account/0xe174...` (encode `/` in URLs) |
-| `GET /v1/pinboard/post?path=...` | Pinboard post by full path (`/@eld/pinboard/...` or `/@namespace/...`) |
-| `GET /v1/pinboard/posts` | Pinboard feed (query parameters per API) |
-| `POST /v1/pinboard/messages:submit` | Submit a signed pinboard message (optional namespace in body) |
-| `GET /v1/namespaces` | Paginated list of registered custom namespaces |
-| `GET /v1/namespace/{namespace_slug}` | Namespace registry detail (registered or not) |
+| Endpoint                             | Purpose                                                                       |
+| ------------------------------------ | ----------------------------------------------------------------------------- |
+| `GET /health`                        | Health check                                                                  |
+| `GET /cado/{cado_path}`              | Fetch CADO at path — e.g. `/cado/@eld/account/0xe174...` (encode `/` in URLs) |
+| `GET /v1/pinboard/post?path=...`     | Pinboard post by full path (`/@eld/pinboard/...` or `/@namespace/...`)        |
+| `GET /v1/pinboard/posts`             | Pinboard feed (query parameters per API)                                      |
+| `POST /v1/pinboard/messages:submit`  | Submit a signed pinboard message (optional namespace in body)                 |
+| `GET /v1/namespaces`                 | Paginated list of registered custom namespaces                                |
+| `GET /v1/namespace/{namespace_slug}` | Namespace registry detail (registered or not)                                 |
 
 Transaction and epoch queries (`/transactions`, `/epoch/current`, and similar) use other routes on the same app server; they are not CADO paths.
 
@@ -240,8 +240,8 @@ Transaction and epoch queries (`/transactions`, `/epoch/current`, and similar) u
 
 ## Summary
 
-- **CADO paths** look like `/@eld/<type>/0x<hex>` — use real hex from the chain or explorer, not placeholders.  
-- **Account paths** use 42-character `0x` + 40 hex; **hash types** use `0x` + 64 hex.  
-- **Pinboard** adds extra segments under `/@eld/pinboard/`.  
-- **Custom namespaces** register at `/@eld/namespace/{slug}`; uploads can use `/@{slug}/{message_id}`.  
+- **CADO paths** look like `/@eld/<type>/0x<hex>` — use real hex from the chain or explorer, not placeholders.
+- **Account paths** use 42-character `0x` + 40 hex; **hash types** use `0x` + 64 hex.
+- **Pinboard** adds extra segments under `/@eld/pinboard/`.
+- **Custom namespaces** register at `/@eld/namespace/{slug}`; uploads can use `/@{slug}/{message_id}`.
 - **content_id** is the hash of the chunk summary; use it for blobs and P2P sync, and pair manifests with `/@eld/content_manifest/...` when you need metadata on-chain.
