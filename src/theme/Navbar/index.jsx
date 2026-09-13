@@ -1,22 +1,36 @@
+import { useEffect } from 'react'
 import Link from '@docusaurus/Link'
 import { useColorMode } from '@docusaurus/theme-common'
 import SearchBar from '@theme/SearchBar'
 import { MoonIcon, SunIcon } from '@site/src/components/ThemeIcons'
 
+export const THEME_STORAGE_KEY = 'eld-docs-theme'
+
 function persistTheme(isLight) {
   if (typeof window !== 'undefined') {
-    window.localStorage.setItem('eld-home-theme', isLight ? 'light' : 'dark')
+    window.localStorage.setItem(THEME_STORAGE_KEY, isLight ? 'light' : 'dark')
   }
 }
 
 /**
- * Custom shell navbar — sole color-mode control for this site.
+ * Custom docs chrome navbar — sole color-mode control for this site.
  * themeConfig.colorMode.disableSwitch stays true so Infima's switch is not shown.
  * themeConfig.navbar stays minimal; links and search live here.
  */
 export default function Navbar() {
   const { colorMode, setColorMode } = useColorMode()
   const isLight = colorMode === 'light'
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return
+    }
+    const stored = window.localStorage.getItem(THEME_STORAGE_KEY)
+    // Migrate legacy explorer/home key if present
+    const legacy = window.localStorage.getItem('eld-home-theme')
+    const preferred = stored ?? legacy
+    setColorMode(preferred === 'light' ? 'light' : 'dark')
+  }, [setColorMode])
 
   const handleThemeToggle = () => {
     const nextIsLight = !isLight
@@ -25,23 +39,23 @@ export default function Navbar() {
   }
 
   return (
-    <header className="navbar explorer-home-shell__header">
-      <Link to="/" className="explorer-home-shell__brand">
-        <span className="explorer-home-shell__brand-mark">E</span>
-        <span className="explorer-home-shell__brand-text">
+    <header className="navbar eld-docs-shell__header">
+      <Link to="/" className="eld-docs-shell__brand">
+        <span className="eld-docs-shell__brand-mark">E</span>
+        <span className="eld-docs-shell__brand-text">
           <span>ELD</span>
-          <span className="explorer-home-shell__brand-muted">{'//'}</span>
-          <span className="explorer-home-shell__brand-muted">DOCS</span>
+          <span className="eld-docs-shell__brand-muted">{'//'}</span>
+          <span className="eld-docs-shell__brand-muted">DOCS</span>
         </span>
       </Link>
 
-      <nav className="explorer-home-shell__nav" aria-label="Site">
-        <Link to="/" className="explorer-home-shell__nav-link">
+      <nav className="eld-docs-shell__nav" aria-label="Site">
+        <Link to="/" className="eld-docs-shell__nav-link">
           Docs
         </Link>
         <a
           href="https://github.com/eldnetwork"
-          className="explorer-home-shell__nav-link"
+          className="eld-docs-shell__nav-link"
           target="_blank"
           rel="noreferrer noopener"
         >
@@ -49,7 +63,7 @@ export default function Navbar() {
         </a>
         <a
           href="https://www.eld.network"
-          className="explorer-home-shell__nav-link"
+          className="eld-docs-shell__nav-link"
           target="_blank"
           rel="noreferrer noopener"
         >
@@ -57,7 +71,7 @@ export default function Navbar() {
         </a>
         <a
           href="https://explorer.eld.network"
-          className="explorer-home-shell__nav-link explorer-home-shell__nav-link--accent"
+          className="eld-docs-shell__nav-link eld-docs-shell__nav-link--accent"
           target="_blank"
           rel="noreferrer noopener"
         >
@@ -65,13 +79,13 @@ export default function Navbar() {
         </a>
       </nav>
 
-      <div className="explorer-home-shell__meta">
-        <div className="explorer-home-shell__search">
+      <div className="eld-docs-shell__meta">
+        <div className="eld-docs-shell__search">
           <SearchBar />
         </div>
         <button
           type="button"
-          className="explorer-home-shell__theme-toggle"
+          className="eld-docs-shell__theme-toggle"
           onClick={handleThemeToggle}
           aria-label={isLight ? 'Switch to dark mode' : 'Switch to light mode'}
           title={isLight ? 'Switch to dark mode' : 'Switch to light mode'}

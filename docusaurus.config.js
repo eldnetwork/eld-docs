@@ -101,7 +101,7 @@ const config = {
       image: 'img/og-1200x630.png',
       // Official ColorModeToggle is disabled on purpose: the swizzled Navbar
       // (`src/theme/Navbar`) is the only theme control (custom ThemeIcons +
-      // localStorage key `eld-home-theme`). Do not set disableSwitch: false
+      // localStorage key `eld-docs-theme`). Do not set disableSwitch: false
       // unless that custom toggle is removed.
       colorMode: {
         defaultMode: 'dark',

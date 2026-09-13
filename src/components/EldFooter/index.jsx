@@ -30,15 +30,15 @@ const footerColumns = [
 
 export default function EldFooter() {
   return (
-    <footer className="explorer-footer">
-      <div className="explorer-footer__grid">
+    <footer className="eld-docs-footer">
+      <div className="eld-docs-footer__grid">
         {footerColumns.map((column) => (
-          <div key={column.heading} className="explorer-footer__column">
+          <div key={column.heading} className="eld-docs-footer__column">
             <h3>{column.heading}</h3>
             {column.items.map((item) => {
               if (item.to) {
                 return (
-                  <Link key={item.label} to={item.to} className="explorer-footer__item">
+                  <Link key={item.label} to={item.to} className="eld-docs-footer__item">
                     {item.label}
                   </Link>
                 )
@@ -49,7 +49,7 @@ export default function EldFooter() {
                   <a
                     key={item.label}
                     href={item.href}
-                    className="explorer-footer__item"
+                    className="eld-docs-footer__item"
                     target="_blank"
                     rel="noreferrer noopener"
                   >
@@ -59,7 +59,7 @@ export default function EldFooter() {
               }
 
               return (
-                <span key={item.label} className="explorer-footer__item">
+                <span key={item.label} className="eld-docs-footer__item">
                   {item.label}
                 </span>
               )
@@ -67,7 +67,7 @@ export default function EldFooter() {
           </div>
         ))}
       </div>
-      <div className="explorer-footer__bottom">
+      <div className="eld-docs-footer__bottom">
         <span>© 2026 ELD NETWORK. ALL RIGHTS RESERVED.</span>
       </div>
     </footer>

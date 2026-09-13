@@ -4,7 +4,7 @@
  * work well for content-centric websites.
  */
 
-@import './explorer-shell.css';
+@import './docs-shell.css';
 
 /* IoskeleyMono Font Family */
 @font-face {
@@ -103,7 +103,7 @@
   font-display: swap;
 }
 
-/* Infima variables — aligned with eld-chain-explorer / eld-website */
+/* Infima variables — Eld docs brand tokens */
 :root {
   --ifm-font-family-base: 'IoskeleyMono', monospace;
   --ifm-font-family-monospace: 'IoskeleyMono', monospace;
@@ -116,9 +116,9 @@
   --ifm-color-primary-lightest: #ffa866;
   --ifm-code-font-size: 90%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
-  /* Must match .explorer-home-shell__header min-height — Docusaurus sidebar/TOC depend on this */
+  /* Must match .eld-docs-shell__header min-height — Docusaurus sidebar/TOC depend on this */
   --ifm-navbar-height: 64px;
-  /* Compact type scale (explorer docs ~0.78–0.98rem body, sidebar ~0.66–0.78rem) */
+  /* Compact type scale for dense docs content */
   --ifm-font-size-base: 14px;
   --ifm-line-height-base: 1.75;
   --ifm-h1-font-size: 1.75rem;
@@ -190,13 +190,13 @@ html {
   align-items: center;
 }
 
-/* Reset Infima navbar defaults — we style via .explorer-home-shell__header */
+/* Reset Infima navbar defaults — we style via .eld-docs-shell__header */
 .navbar {
   padding: 0;
   box-shadow: none;
 }
 
-/* Docs layout — explorer shell colors */
+/* Docs layout — shell colors */
 .main-wrapper,
 .theme-doc-wrapper,
 .docMainContainer {

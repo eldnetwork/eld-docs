@@ -1,44 +1,26 @@
-/* Explorer shell variables and header/footer — aligned with eld-chain-explorer */
+/* Docs shell — header, footer, and page chrome */
 
-.eld-docs-shell.explorer-home-shell {
-  --lh-header-bg: rgba(9, 9, 9, 0.94);
-  --lh-success: #62d58b;
-  --lh-shell-gradient:
+#__docusaurus.eld-docs-shell,
+#__docusaurus {
+  --eld-header-bg: rgba(9, 9, 9, 0.94);
+  --eld-shell-gradient:
     radial-gradient(circle at top center, rgba(255, 122, 24, 0.08), transparent 32%),
     linear-gradient(180deg, #0a0a0a 0%, #070707 100%);
-  --lh-button-bg: rgba(255, 255, 255, 0.02);
-  --lh-theme-btn-hover: rgba(255, 255, 255, 0.1);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  background: var(--lh-shell-gradient) !important;
+  background: var(--eld-shell-gradient) !important;
   color: var(--lh-text);
 }
 
-[data-theme='light'] .eld-docs-shell.explorer-home-shell,
-.eld-docs-shell.explorer-home-shell--light {
-  --lh-header-bg: rgba(248, 250, 252, 0.94);
-  --lh-shell-gradient:
+[data-theme='light'] #__docusaurus {
+  --eld-header-bg: rgba(248, 250, 252, 0.94);
+  --eld-shell-gradient:
     radial-gradient(circle at top center, rgba(255, 122, 24, 0.16), transparent 42%),
     linear-gradient(180deg, #fafbfc 0%, #eff3f8 100%);
-  --lh-button-bg: rgba(255, 255, 255, 0.8);
-  --lh-theme-btn-hover: rgba(15, 23, 42, 0.1);
-}
-
-.eld-docs-shell,
-.eld-docs-shell * {
-  box-sizing: border-box;
-}
-
-.eld-docs-shell__main {
-  flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
 }
 
 /* Header — .navbar class required for Docusaurus TOC / sidebar layout */
 
-.navbar.explorer-home-shell__header {
+.navbar.eld-docs-shell__header {
   position: sticky;
   top: 0;
   z-index: 200;
@@ -50,12 +32,12 @@
   min-height: var(--ifm-navbar-height);
   height: var(--ifm-navbar-height);
   padding: 0 24px;
-  background: var(--lh-header-bg);
+  background: var(--eld-header-bg);
   border-bottom: 1px solid var(--lh-border);
   backdrop-filter: blur(10px);
 }
 
-.explorer-home-shell__brand {
+.eld-docs-shell__brand {
   display: inline-flex;
   align-items: center;
   gap: 12px;
@@ -63,12 +45,12 @@
   text-decoration: none;
 }
 
-.explorer-home-shell__brand:hover {
+.eld-docs-shell__brand:hover {
   color: var(--lh-text);
   text-decoration: none;
 }
 
-.explorer-home-shell__brand-mark {
+.eld-docs-shell__brand-mark {
   width: 20px;
   height: 20px;
   display: grid;
@@ -80,7 +62,7 @@
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.explorer-home-shell__brand-text {
+.eld-docs-shell__brand-text {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -89,11 +71,11 @@
   text-transform: uppercase;
 }
 
-.explorer-home-shell__brand-muted {
+.eld-docs-shell__brand-muted {
   color: var(--lh-muted);
 }
 
-.explorer-home-shell__nav {
+.eld-docs-shell__nav {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
@@ -101,7 +83,7 @@
   margin-left: 28px;
 }
 
-.explorer-home-shell__nav-link {
+.eld-docs-shell__nav-link {
   color: var(--lh-muted);
   text-decoration: none;
   text-transform: uppercase;
@@ -109,57 +91,37 @@
   font-size: 0.68rem;
 }
 
-.explorer-home-shell__nav-link:hover {
+.eld-docs-shell__nav-link:hover {
   color: var(--lh-text);
   text-decoration: none;
 }
 
-.explorer-home-shell__nav-link--accent {
+.eld-docs-shell__nav-link--accent {
   color: var(--lh-accent);
 }
 
-.explorer-home-shell__nav-link--accent:hover {
+.eld-docs-shell__nav-link--accent:hover {
   color: var(--lh-text);
 }
 
-.explorer-home-shell__meta {
+.eld-docs-shell__meta {
   display: flex;
   align-items: center;
   gap: 16px;
   margin-left: auto;
 }
 
-.explorer-home-shell__search {
+.eld-docs-shell__search {
   display: flex;
   align-items: center;
   min-width: 0;
 }
 
-.explorer-home-shell__search .navbar__search-input {
+.eld-docs-shell__search .navbar__search-input {
   width: 11rem;
 }
 
-.explorer-home-shell__chain-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.explorer-home-shell__chain-label {
-  color: var(--lh-muted);
-  font-size: 0.7rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.explorer-home-shell__chain-id {
-  color: var(--lh-faint);
-  font-size: 0.7rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-
-.explorer-home-shell__theme-toggle {
+.eld-docs-shell__theme-toggle {
   margin-left: 2px;
   display: inline-flex;
   align-items: center;
@@ -175,47 +137,34 @@
   cursor: pointer;
 }
 
-.explorer-home-shell__theme-toggle:hover {
+.eld-docs-shell__theme-toggle:hover {
   color: var(--lh-text);
   background: transparent;
 }
 
-.explorer-home-shell__intro-link {
-  color: var(--lh-accent);
-  text-decoration: none;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.68rem;
-}
-
-.explorer-home-shell__intro-link:hover {
-  color: var(--lh-text);
-  text-decoration: none;
-}
-
 /* Footer */
 
-.explorer-footer {
+.eld-docs-footer {
   width: min(1440px, 100%);
   margin: 0 auto;
   padding: 14px 24px 24px;
 }
 
-.explorer-footer__grid {
+.eld-docs-footer__grid {
   display: grid;
   grid-template-columns: 1.2fr 1fr 1fr 1fr;
   border-top: 1px solid var(--lh-border);
   border-left: 1px solid var(--lh-border);
 }
 
-.explorer-footer__column {
+.eld-docs-footer__column {
   padding: 26px 22px 32px;
   border-right: 1px solid var(--lh-border);
   border-bottom: 1px solid var(--lh-border);
   background: rgba(255, 255, 255, 0.01);
 }
 
-.explorer-footer__column h3 {
+.eld-docs-footer__column h3 {
   margin: 0 0 30px;
   font-size: 0.66rem;
   color: var(--lh-faint);
@@ -223,7 +172,7 @@
   text-transform: uppercase;
 }
 
-.explorer-footer__item {
+.eld-docs-footer__item {
   display: block;
   margin: 0;
   color: var(--lh-muted) !important;
@@ -232,15 +181,15 @@
   text-decoration: none !important;
 }
 
-.explorer-footer__item + .explorer-footer__item {
+.eld-docs-footer__item + .eld-docs-footer__item {
   margin-top: 14px;
 }
 
-.explorer-footer__item:hover {
+.eld-docs-footer__item:hover {
   color: var(--lh-text) !important;
 }
 
-.explorer-footer__bottom {
+.eld-docs-footer__bottom {
   padding: 18px 4px 0;
   color: var(--lh-faint);
   font-size: 0.64rem;
@@ -254,16 +203,16 @@
     --ifm-navbar-height: 8.5rem;
   }
 
-  .explorer-footer {
+  .eld-docs-footer {
     padding-left: 16px;
     padding-right: 16px;
   }
 
-  .explorer-footer__grid {
+  .eld-docs-footer__grid {
     grid-template-columns: 1fr 1fr;
   }
 
-  .navbar.explorer-home-shell__header {
+  .navbar.eld-docs-shell__header {
     flex-direction: column;
     align-items: flex-start !important;
     height: auto;
@@ -271,34 +220,34 @@
     padding: 14px 16px;
   }
 
-  .explorer-home-shell__nav {
+  .eld-docs-shell__nav {
     margin-left: 0;
     width: 100%;
     gap: 14px;
   }
 
-  .explorer-home-shell__meta {
+  .eld-docs-shell__meta {
     margin-left: 0;
     width: 100%;
     justify-content: space-between;
     gap: 12px;
   }
 
-  .explorer-home-shell__search {
+  .eld-docs-shell__search {
     flex: 1 1 auto;
   }
 
-  .explorer-home-shell__search .navbar__search-input {
+  .eld-docs-shell__search .navbar__search-input {
     width: 100%;
   }
 }
 
 @media (max-width: 640px) {
-  .explorer-footer__grid {
+  .eld-docs-footer__grid {
     grid-template-columns: 1fr;
   }
 
-  .explorer-footer__bottom {
+  .eld-docs-footer__bottom {
     flex-direction: column;
   }
 }
