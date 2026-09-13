@@ -36,4 +36,30 @@ describe('Navbar', () => {
       'https://explorer.eld.network',
     )
   })
+
+  it('toggles a compact mobile menu', async () => {
+    const user = userEvent.setup()
+    render(<Navbar />)
+
+    const menuButton = screen.getByRole('button', { name: /open menu/i })
+    expect(menuButton).toHaveAttribute('aria-expanded', 'false')
+    expect(document.querySelector('.eld-docs-shell__header')).not.toHaveClass(
+      'eld-docs-shell__header--menu-open',
+    )
+
+    await user.click(menuButton)
+    expect(screen.getByRole('button', { name: /close menu/i })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    )
+    expect(document.querySelector('.eld-docs-shell__header')).toHaveClass(
+      'eld-docs-shell__header--menu-open',
+    )
+
+    await user.click(screen.getByRole('link', { name: 'Docs' }))
+    expect(screen.getByRole('button', { name: /open menu/i })).toHaveAttribute(
+      'aria-expanded',
+      'false',
+    )
+  })
 })
