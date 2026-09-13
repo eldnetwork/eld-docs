@@ -18,14 +18,6 @@ const config = {
     {
       tagName: 'meta',
       attributes: {
-        name: 'keywords',
-        content:
-          'Eld, blockchain, content-addressed, ephemeral storage, CADO, capacity provider, decentralized storage',
-      },
-    },
-    {
-      tagName: 'meta',
-      attributes: {
         name: 'author',
         content: 'Eld Network',
       },
@@ -90,6 +82,18 @@ const config = {
     ],
   ],
 
+  themes: [
+    [
+      '@easyops-cn/docusaurus-search-local',
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        hashed: true,
+        docsRouteBasePath: '/',
+        indexBlog: false,
+      }),
+    ],
+  ],
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -103,6 +107,7 @@ const config = {
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
+      // Nav items and search are rendered by the swizzled Navbar, not Infima.
       navbar: {
         hideOnScroll: false,
       },

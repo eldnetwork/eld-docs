@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from '@docusaurus/Link'
 import { useColorMode } from '@docusaurus/theme-common'
+import SearchBar from '@theme/SearchBar'
 import { MoonIcon, SunIcon } from '@site/src/components/ThemeIcons'
 
 function persistTheme(isLight) {
@@ -12,6 +13,7 @@ function persistTheme(isLight) {
 /**
  * Custom shell navbar — sole color-mode control for this site.
  * themeConfig.colorMode.disableSwitch stays true so Infima's switch is not shown.
+ * themeConfig.navbar stays minimal; links and search live here.
  */
 export default function Navbar() {
   const { colorMode, setColorMode } = useColorMode()
@@ -34,7 +36,40 @@ export default function Navbar() {
         </span>
       </Link>
 
+      <nav className="explorer-home-shell__nav" aria-label="Site">
+        <Link to="/" className="explorer-home-shell__nav-link">
+          Docs
+        </Link>
+        <a
+          href="https://github.com/eldnetwork"
+          className="explorer-home-shell__nav-link"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          GitHub
+        </a>
+        <a
+          href="https://www.eld.network"
+          className="explorer-home-shell__nav-link"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          Website
+        </a>
+        <a
+          href="https://explorer.eld.network"
+          className="explorer-home-shell__nav-link explorer-home-shell__nav-link--accent"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          Explorer
+        </a>
+      </nav>
+
       <div className="explorer-home-shell__meta">
+        <div className="explorer-home-shell__search">
+          <SearchBar />
+        </div>
         <button
           type="button"
           className="explorer-home-shell__theme-toggle"
@@ -44,14 +79,6 @@ export default function Navbar() {
         >
           {isLight ? <MoonIcon /> : <SunIcon />}
         </button>
-        <a
-          href="https://explorer.eld.network"
-          className="explorer-home-shell__intro-link"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          ELD BLOCKCHAIN EXPLORER -&gt;
-        </a>
       </div>
     </header>
   )

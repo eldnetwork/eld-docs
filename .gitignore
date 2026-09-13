@@ -14,8 +14,7 @@ node_modules/
 .DS_Store
 .env
 .env.*
-scripts/deploy.local.sh
-scripts/invalidate.local.sh
+*.local.sh
 *.pem
 *.key
 *.p12
