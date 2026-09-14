@@ -37,6 +37,8 @@ That runs Prettier, ESLint, markdownlint, unit tests, npm audit, and a productio
 2. Run `npm run ci` locally
 3. Describe what changed and why
 
+Merges to `main` do not deploy [docs.eld.network](https://docs.eld.network). Production updates are gated by version tags and GitHub Releases — see [Releasing](README.md#releasing).
+
 ## Security
 
 Do not report security vulnerabilities in public issues. See [SECURITY.md](SECURITY.md).

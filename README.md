@@ -46,6 +46,26 @@ npm run ci
 
 Runs Prettier, ESLint, markdownlint, Vitest (Navbar/Footer), `npm audit` on production deps (fails on critical+; Docusaurus still reports known unfixed highs), and a production build. CI also runs [lychee](https://lychee.cli.rs/) against Markdown external links (`npm run links` locally if lychee is installed).
 
+## Releasing
+
+Merges to `main` (and work on feature branches) do **not** deploy the live site. Production updates are gated by version tags and GitHub Releases:
+
+1. Land the changes on `main` and wait for [CI](https://github.com/eldnetwork/eld-docs/actions/workflows/ci.yml) to pass.
+2. Align `package.json` `"version"` with the release (e.g. `0.1.0`), then create and push a semver tag from that commit:
+
+   ```bash
+   git checkout main
+   git pull
+   git tag v0.1.0
+   git push origin v0.1.0
+   ```
+
+3. Pushing the tag runs the **Draft release** workflow, which opens a **draft** GitHub Release (with generated notes). Nothing is deployed yet.
+4. Review the draft under [Releases](https://github.com/eldnetwork/eld-docs/releases), edit notes if needed, then **Publish release**.
+5. Publishing triggers the **Deploy production** workflow, which builds the tagged commit and updates [docs.eld.network](https://docs.eld.network).
+
+Only tags matching `v*.*.*` (for example `v0.1.0`) participate in this flow. Tags must point at a commit that is on `main`.
+
 ## Links
 
 - [Eld website](https://www.eld.network)
