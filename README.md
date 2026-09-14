@@ -11,6 +11,8 @@ This repository is the public documentation site only — not the Eld protocol, 
 
 **Live site:** [https://docs.eld.network](https://docs.eld.network)
 
+![Eld Docs home page](screenshot-home.png)
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) >= 20
